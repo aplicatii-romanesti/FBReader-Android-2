@@ -56,7 +56,7 @@ android {
     defaultConfig {
         minSdkVersion project.ext.globalMinSdkVersion
         // this will over-write the values in androidmanifest.xml
-        maxSdkVersion project.ext.globalMaxSdkVersion
+        //maxSdkVersion project.ext.globalMaxSdkVersion
         targetSdkVersion project.ext.globalTargetSdkVersion
         versionCode 1 // this is to be set by code below
         versionName new File("$projectDir/VERSION").text.trim()

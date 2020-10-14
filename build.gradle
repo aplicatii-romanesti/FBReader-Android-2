@@ -6,7 +6,9 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        //classpath 'com.android.tools.build:gradle:3.6.0'
+        // classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'com.android.tools.build:gradle:3.5.3'
     }
 }
 
@@ -22,9 +24,9 @@ allprojects {
         }
     }
     project.ext {
-        globalBuildToolsVersion="28.0.3" //29.0.0 rc2" //28.0.3" //"27.0.3" //"28.0.0-rc1" // '28.0.0 rc1'
+        globalBuildToolsVersion="28.0.3" //29.0.5" 29.0.2 //28.0.3" //"27.0.3" //"28.0.0-rc1" // '28.0.0 rc1' //fails with errors on 29.x
         globalMinSdkVersion=24 //24 //24(7.0) 16 //ideally keep 16; for SYSTEM_UI_FLAG_IMMERSIVE_STICKY, do an IF, as we need 19 (KitKat) there
-        globalMaxSdkVersion=28  // ideally never used
+        globalMaxSdkVersion=30  // ideally never used (29-andr10; 30-andr11)
         globalTargetSdkVersion=28 //18 //27 //'P' //27 //MAX 18 for SDCARD READ/WRITE Permissions without adding more code
         globalCompileSdkVersion=28 //'android-Q' //28 //'android-P' //27
         //globalMultiDexEnabled=true

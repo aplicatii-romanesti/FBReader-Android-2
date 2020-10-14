@@ -106,7 +106,7 @@ final public class SQLiteBooksDatabase extends BooksDatabase { //aplicatii.roman
 	private void migrate() {
 
 		/*final*/ int version = myDatabase.getVersion(); //remove final by aplicatii.romanesti
-		final int currentVersion = 55;
+		final int currentVersion = 63;
 		if (version >= currentVersion) {
 			return;
 		}
