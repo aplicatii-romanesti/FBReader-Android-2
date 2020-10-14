@@ -19,7 +19,8 @@ if [[ ! -d FBReader-Android-2 ]]; then
   git clone -b molitfelnic --single-branch git@github.com:aplicatii-romanesti/FBReader-Android-2.git
 fi
 
-cd ~/FBReader-Android-2/
+BUILD_FOLDER=~/FBReader-Android-2
+cd $BUILD_FOLDER
 export GIT_BRANCH=$(git branch | grep '*' | cut -d' ' -f2)
 cd -
 
@@ -37,7 +38,6 @@ cp ~/777/aplicatii.romanesti-release-key.keystore ~/FBReader-Android-2/
 
 
 ### VERIFY BUILD NUMBERS MATCH:
-BUILD_FOLDER="~/FBReader-Android-2"
 VV=$(cat ${BUILD_FOLDER}/fbreader/app/VERSION | cut -d"." -f3)
 VSQL=$(grep 'currentVersion =' ${BUILD_FOLDER}/fbreader/app/src/main/java/org/geometerplus/android/fbreader/libraryService/SQLiteBooksDatabase.java| cut -d"=" -f2 | cut -d";" -f1 | cut -d" " -f2)
 
