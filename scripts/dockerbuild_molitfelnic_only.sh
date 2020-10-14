@@ -18,6 +18,7 @@ NAME="${APP}_${GIT_BRANCH}_${DATE_START}"
 echo "FYI, GIT_BRANCH=$GIT_BRANCH at date: $DATE_START (approx: `date`)" | tee ${NAME}.log
 
 #############
+cp -rp ~/Books_with_HowTO/* ~/Books/
 BOOKS_DIR=~/Books
 
 cd ~/FBReader-Android-2/
@@ -50,6 +51,18 @@ cp ~/777/aplicatii.romanesti-release-key.keystore ~/FBReader-Android-2/
 #unzip '/home/aplicatii-romanesti/ToateCartile_EPUB_latest.zip'
 #cd -
 
+
+### VERIFY BUILD NUMBERS MATCH:
+BUILD_FOLDER="~/FBReader-Android-2"
+VV=$(cat ${BUILD_FOLDER}/fbreader/app/VERSION | cut -d"." -f3)
+VSQL=$(grep 'currentVersion =' ${BUILD_FOLDER}/fbreader/app/src/main/java/org/geometerplus/android/fbreader/libraryService/SQLiteBooksDatabase.java| cut -d"=" -f2 | cut -d";" -f1 | cut -d" " -f2)
+
+if [[ $VV -ne $VSQL ]]; then
+  echo "ERROR !!!!  $VV != $VSQL -> FIX VERSIONS!!!"
+  exit 9
+fi
+
+
 cd ~/
 docker rm -f fb || true
 #docker run --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.1 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $GIT_BRANCH.log
@@ -60,6 +73,6 @@ docker run --rm --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build
 #docker run --rm --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.0 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease'
 
 ls -la ~/FBReader-Android-2/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk | tee -a $NAME.log
-cp -f ~/FBReader-Android-2/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk	
+cp -f ~/FBReader-Android-2/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
 echo "Ended at: `date` (was started at $DATE_START" | tee -a $NAME.log
 

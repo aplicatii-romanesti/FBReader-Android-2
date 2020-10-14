@@ -36,3 +36,4 @@ fbreader/app/x86/
 fbreader/app/x8664/
 fbreader/app/src/main/assets/data/SDCard/
 .externalNativeBuild
+.cxx
