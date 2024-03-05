@@ -14,10 +14,10 @@ echo "Processing: $APPS_M_BASED"
 echo "1. Copy the ~/Books_with_HowTO (howto image incorporated) to the ~/Books folder (which we use)"
 
 if [[ -d ~/Books/ ]]; then
-  mv ~/Books/ ~/Books.${DATE_NOW}
-else
-  mkdir -p ~/Books/
+  mv ~/Books/ ~/Books.old #${DATE_NOW}
 fi
+
+mkdir -p ~/Books/
 
 cp -rp ~/Books_with_HowTO/* ~/Books/
 
