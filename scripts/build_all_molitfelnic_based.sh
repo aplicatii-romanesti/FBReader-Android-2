@@ -30,4 +30,13 @@ for app in ${APPS_M_BASED[@]}; do
   ./molitfelnic_to_any_app.sh $app && ./dockerbuild.sh $app
 done
 
+echo "Trying also ftp upload using ./ftp_upload_apk_to_phone.sh ${NAME}.apk"
+for app in ${APPS_M_BASED[@]}; do
+  echo "ftp-ing $app"
+  ./scripts/ftp_upload_apk_to_phone.sh ${NAME}.apk
+done
 
+echo "TO retry ftp upload, do: "
+for app in ${APPS_M_BASED[@]}; do
+  echo "./scripts/ftp_upload_apk_to_phone.sh ${NAME}.apk"
+done
