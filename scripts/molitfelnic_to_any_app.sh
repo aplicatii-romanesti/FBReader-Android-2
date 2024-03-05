@@ -1,5 +1,5 @@
 #!/bin/bash
-set -vxeu -o pipefail
+set -xe -o pipefail
 #find ./ -type f "*.java" -exec perl -p -i -e 's!FBReaderMolitfelnic.ORG!FBReader.ORG!g' {} +
 #git clone -b bibliotecaortodoxa --single-branch https://github.com/aplicatii-romanesti/FBReader-Android-2.git
 #git checkout -b molitfelnic bibliotecaortodoxa
@@ -19,6 +19,9 @@ else
   exit 1
 fi
 
+set -u
+
+echo "TARGET_APP=$TARGET_APP"
 
 # BASE SETUP:
 RESOURCES_DIR="./molitfelnic_to_any_app_res/${TARGET_APP}"
