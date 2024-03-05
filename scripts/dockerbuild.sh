@@ -18,6 +18,7 @@ if [[ ! -d FBReader-Android-2 ]]; then
   #git clone -b ${1:-molitfelnic} --single-branch git@github.com:aplicatii-romanesti/FBReader-Android-2.git
   git clone -b molitfelnic --single-branch git@github.com:aplicatii-romanesti/FBReader-Android-2.git
 else
+  cd FBReader-Android-2
   git pull
   git checkout molitfelnic
   git pull
@@ -25,6 +26,7 @@ else
 fi
 
 BUILD_FOLDER=~/FBReader-Android-2
+
 cd $BUILD_FOLDER
 export GIT_BRANCH=$(git branch | grep '*' | cut -d' ' -f2)
 cd -
@@ -32,7 +34,7 @@ cd -
 NAME="${APP}_${GIT_BRANCH}_${DATE_START}"
 echo "FYI, GIT_BRANCH=$GIT_BRANCH at date: $DATE_START (approx: `date`)" | tee ${NAME}.log
 
-cp ~/777/aplicatii.romanesti-release-key.keystore ~/FBReader-Android-2/
+cp ~/777/aplicatii.romanesti-release-key.keystore $BUILD_FOLDER/
 
 #mkdir -p ~/FBReader-Android-2/fbreader/app/src/main/assets/data/SDCard/Books/
 #rm -rf ~/FBReader-Android-2/fbreader/app/src/main/assets/data/SDCard/Books/*
