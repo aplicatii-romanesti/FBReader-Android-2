@@ -17,6 +17,11 @@ cd ~/
 if [[ ! -d FBReader-Android-2 ]]; then
   #git clone -b ${1:-molitfelnic} --single-branch git@github.com:aplicatii-romanesti/FBReader-Android-2.git
   git clone -b molitfelnic --single-branch git@github.com:aplicatii-romanesti/FBReader-Android-2.git
+else
+  git pull
+  git checkout molitfelnic
+  git pull
+  sleep 3
 fi
 
 BUILD_FOLDER=~/FBReader-Android-2
@@ -38,25 +43,25 @@ cp ~/777/aplicatii.romanesti-release-key.keystore ~/FBReader-Android-2/
 
 
 ### VERIFY BUILD NUMBERS MATCH:
-VV=$(cat ${BUILD_FOLDER}/fbreader/app/VERSION | cut -d"." -f3)
-VSQL=$(grep 'currentVersion =' ${BUILD_FOLDER}/fbreader/app/src/main/java/org/geometerplus/android/fbreader/libraryService/SQLiteBooksDatabase.java| cut -d"=" -f2 | cut -d";" -f1 | cut -d" " -f2)
+# NO LONGER NEEDED, it's automated ->> final int currentVersion = BuildConfig.VERSION_CODE;
+# VV=$(cat ${BUILD_FOLDER}/fbreader/app/VERSION | cut -d"." -f3)
+# VSQL=$(grep 'currentVersion =' ${BUILD_FOLDER}/fbreader/app/src/main/java/org/geometerplus/android/fbreader/libraryService/SQLiteBooksDatabase.java| cut -d"=" -f2 | cut -d";" -f1 | cut -d" " -f2)
 
-if [[ $VV -ne $VSQL ]]; then
-  echo "ERROR !!!!  $VV != $VSQL -> FIX VERSIONS!!!"
-  exit 9
-fi
-
+# if [[ $VV -ne $VSQL ]]; then
+#   echo "ERROR !!!!  $VV != $VSQL -> FIX VERSIONS!!!"
+#   exit 9
+# fi
 
 cd ~/
 docker rm -f fb || true
 #docker run --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.1 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $GIT_BRANCH.log
-docker run --rm --name fb -ti -v `pwd`/FBReader-Android-2:/p $(cat ./scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease' | tee -a $NAME.log
+docker run --rm --name fb -ti -v `pwd`/${BUILD_FOLDER}:/p $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease' | tee -a $NAME.log
 # --rm
 
 #or only pack:
 #docker run --rm --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.0 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease'
 
-ls -la ~/FBReader-Android-2/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk | tee -a $NAME.log
-cp -f ~/FBReader-Android-2/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
+ls -la ~/${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk | tee -a $NAME.log
+cp -f ~/${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
 echo "Ended at: `date` (was started at $DATE_START" | tee -a $NAME.log
 
