@@ -19,6 +19,8 @@
 
 package org.geometerplus.android.fbreader.library;
 
+import static org.geometerplus.android.fbreader.api.FBReaderIntents.DEFAULT_PACKAGE;
+
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -39,6 +41,7 @@ public class LibrarySearchActivity extends Activity {
 				intent = new Intent(
 					LibraryActivity.START_SEARCH_ACTION, null, this, LibraryActivity.class
 				);
+				intent.setPackage(DEFAULT_PACKAGE); // starting 2023 (api 33/and 13) due to https://support.google.com/faqs/answer/10399926
 				intent.putExtra(SearchManager.QUERY, pattern);
 				startActivity(intent);
 			}
@@ -48,6 +51,7 @@ public class LibrarySearchActivity extends Activity {
 			final String bookStr = intent.getExtras().getString(SearchManager.EXTRA_DATA_KEY);
 
 			Intent newIntent = new Intent(LocalLibrarySearchActivity.LOCAL_SEARCH_RESULT_VIEW);
+			newIntent.setPackage(DEFAULT_PACKAGE); // starting 2023 (api 33/and 13) due to https://support.google.com/faqs/answer/10399926
 			newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			newIntent.setData( Uri.fromParts("local-search-result","book-id",bookStr));
 

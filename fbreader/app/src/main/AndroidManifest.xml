@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- manifest's package="org.geometerplus.zlibrary.ui.android.aplicatii.romanesti" MOVED to build.gradle namespace, must for gradle 8.x -->
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic"
@@ -12,6 +13,8 @@
 		<!--android:maxSdkVersion="10"
 	/-->
 	<supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" android:anyDensity="true"/>
+
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" android:required="false"/>
     <!--<uses-permission android:name="android.permission.INTERNET" android:required="false"/>-->
 	<!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>-->
@@ -63,7 +66,8 @@
 			android:label="@string/app_name"
 			android:theme="@style/FBReader.Activity"
 			android:configChanges="orientation|keyboardHidden|screenSize"
-		>
+			android:exported="true"
+		> <!-- android:exported="false" 2023 test-->
             <!-- android:exported="false" #cred ca e necesar pt google search... -->
             <intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
@@ -226,7 +230,7 @@
 				<category android:name="android.intent.category.DEFAULT"/>
 			</intent-filter>
 		</activity>
-		<activity android:name="org.geometerplus.android.fbreader.library.LibrarySearchActivity" android:process=":library" android:theme="@android:style/Theme.NoDisplay">
+		<activity android:name="org.geometerplus.android.fbreader.library.LibrarySearchActivity" android:process=":library" android:theme="@android:style/Theme.NoDisplay" android:exported="false">
 			<!-- android:exported="false" maybe needed for google search??? -->
 			<intent-filter>
 				<action android:name="android.intent.action.SEARCH"/>
@@ -246,7 +250,7 @@
 			</intent-filter>
 			<meta-data android:name="android.app.searchable" android:resource="@xml/searchable_for_local_library_activity"/>
 		</activity>
-		<activity android:name="org.geometerplus.android.fbreader.library.LibraryActivity" android:launchMode="singleTask" android:process=":library" android:theme="@style/FBReader.Activity" android:configChanges="orientation|keyboardHidden|screenSize">
+		<activity android:name="org.geometerplus.android.fbreader.library.LibraryActivity" android:launchMode="singleTask" android:process=":library" android:theme="@style/FBReader.Activity" android:configChanges="orientation|keyboardHidden|screenSize" android:exported="false">
 			<meta-data android:name="android.app.default_searchable" android:value="org.geometerplus.android.fbreader.library.LibrarySearchActivity"/>
 			<intent-filter>
 				<action android:name="android.mfbreadermolitfelnic.action.LIBRARY"/>
@@ -259,7 +263,7 @@
 			android:configChanges="orientation|keyboardHidden|screenSize"
 			android:exported="false"
 		/>
-		<activity android:name="org.geometerplus.android.fbreader.preferences.PreferenceActivity" android:theme="@style/FBReader.Activity" android:configChanges="orientation|keyboardHidden|screenSize" android:process=":networkLibrary" android:exported="false" >
+		<activity android:name="org.geometerplus.android.fbreader.preferences.PreferenceActivity" android:theme="@style/FBReader.Activity" android:configChanges="orientation|keyboardHidden|screenSize" android:process=":networkLibrary" android:exported="true" >
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW"/>
 				<category android:name="android.intent.category.DEFAULT"/>

@@ -1,8 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
+	namespace = 'org.fbreader.formats'
 	compileSdkVersion project.ext.globalCompileSdkVersion
 	buildToolsVersion project.ext.globalBuildToolsVersion
+	ndkVersion project.ext.globalNdkVersion
 
 	lintOptions {
 		abortOnError false
@@ -52,4 +54,8 @@ android {
 		delete 'src/main/obj'
 		delete 'src/main/libs'
 	}
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
 }

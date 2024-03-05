@@ -383,6 +383,8 @@ public final class FBReaderMolitfelnic extends FBReaderMainActivity implements Z
 	public void onOptionsMenuClosed(Menu menu) {
 		super.onOptionsMenuClosed(menu);
 		setStatusBarVisible(false);
+		// Solution for issue on Android 14 (SDK34) where the menu shows only once after first start. Note also the change in the setupMenu below.
+		invalidateOptionsMenu();
 	}
 
 	@Override
@@ -628,7 +630,7 @@ public final class FBReaderMolitfelnic extends FBReaderMainActivity implements Z
 			}
 		});
 
-		registerReceiver(myBatteryInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+		registerReceiver(myBatteryInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED), RECEIVER_EXPORTED);
 		IsPaused = false;
 		myResumeTimestamp = System.currentTimeMillis();
 		if (OnResumeAction != null) {
@@ -637,7 +639,7 @@ public final class FBReaderMolitfelnic extends FBReaderMainActivity implements Z
 			action.run();
 		}
 
-		registerReceiver(mySyncUpdateReceiver, new IntentFilter(FBReaderIntents.Event.SYNC_UPDATED));
+		registerReceiver(mySyncUpdateReceiver, new IntentFilter(FBReaderIntents.Event.SYNC_UPDATED), RECEIVER_EXPORTED);
 
 		SetScreenOrientationAction.setOrientation(this, getZLibrary().getOrientationOption().getValue());
 		if (myCancelIntent != null) {
@@ -869,9 +871,12 @@ public final class FBReaderMolitfelnic extends FBReaderMainActivity implements Z
 
 	private void setupMenu(Menu menu) {
 		final String menuLanguage = ZLResource.getLanguageOption().getValue();
+		// Solution for issue on Android 14 (SDK34) where the menu shows only once after first start. Note also the invalidateOptionsMenu change above.
+		/*
 		if (menuLanguage.equals(myMenuLanguage)) {
 			return;
 		}
+  		*/
 		myMenuLanguage = menuLanguage;
 
 		menu.clear();

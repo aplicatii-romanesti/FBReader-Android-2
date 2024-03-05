@@ -1,2 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.mobeta.android.dslv"/>
+<!-- package="com.mobeta.android.dslv" moved for gradle 8.x to build.gradle namespace -->
+<manifest />

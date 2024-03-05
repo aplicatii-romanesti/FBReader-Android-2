@@ -1,20 +1,31 @@
 buildscript {
     repositories {
-        jcenter()
+        // jcenter() // deprecated
         google()
         mavenCentral()
     }
 
     dependencies {
+        // find latest here: https://mvnrepository.com/artifact/com.android.tools.build/gradle?repo=google
+        // reference: https://developer.android.com/reference/tools/gradle-api
+        // after updating here, update also gradle-wrapper.properties' param: distributionUrl
+        // it might req. also studio upgrade, if AGP compatibility does not match. see: https://developer.android.com/studio/releases#android_gradle_plugin_and_android_studio_compatibility
+
         //classpath 'com.android.tools.build:gradle:3.6.0'
-        // classpath 'com.android.tools.build:gradle:4.0.0'
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        // classpath 'com.android.tools.build:gradle:4.0.0' //working 2023
+        // classpath 'com.android.tools.build:gradle:8.1.0-beta01' // working and in production with sdk 33, cu florin;
+        classpath 'com.android.tools.build:gradle:8.3.0-rc02' //8.3.0-beta01' //8.3.0-alpha18
+        //classpath 'com.android.tools.build:gradle:8.4.0-alpha01' //8.3.0-alpha18
+        // req. min graded version 6.1.1// works 8.0.2
+//        classpath 'com.android.tools.build:gradle:8.1.0-alpha08'
+        // classpath 'com.android.tools.build:gradle:3.5.3' // working
     }
 }
 
 allprojects {
     repositories {
-        jcenter()
+        // jcenter()
+        mavenCentral() //added as jcenter() was deprecated
         google()
     }
     //added to remove compilation warnings:
@@ -24,13 +35,16 @@ allprojects {
         }
     }
     project.ext {
-        globalBuildToolsVersion="28.0.3" //29.0.5" 29.0.2 //28.0.3" //"27.0.3" //"28.0.0-rc1" // '28.0.0 rc1' //fails with errors on 29.x
-        globalMinSdkVersion=24 //24 //24(7.0) 16 //ideally keep 16; for SYSTEM_UI_FLAG_IMMERSIVE_STICKY, do an IF, as we need 19 (KitKat) there
-        globalMaxSdkVersion=30  // ideally never used (29-andr10; 30-andr11)
-        globalTargetSdkVersion=28 //18 //27 //'P' //27 //MAX 18 for SDCARD READ/WRITE Permissions without adding more code
-        globalCompileSdkVersion=28 //'android-Q' //28 //'android-P' //27
+        globalBuildToolsVersion="34.0.0" //"34.0.0 rc3" //"33.0.2" //"30.0.3"//"33.0.2"// //"29.0.2"//"33.0.2" // //"28.0.3" //29.0.5" 29.0.2 //28.0.3" //"27.0.3" //"28.0.0-rc1" // '28.0.0 rc1' //fails with errors on 29.x
+        // for buildtools 31+, needs gradle 7 & gradleplugin 7; alternatively rename d8 to dx
+        globalMinSdkVersion=28 //moving from 30 to 33 due to the need to add Context.RECEIVER_NOT_EXPORTED/RECEIVER_EXPORTED pt Andoird 14+  //33 //release only for and13+ //24 //24 //24(7.0) 16 //ideally keep 16; for SYSTEM_UI_FLAG_IMMERSIVE_STICKY, do an IF, as we need 19 (KitKat) there
+        // globalMaxSdkVersion=33  // ideally never used (29-andr10; 30/31-andr11; 32-and12; 33-and13;)
+        globalTargetSdkVersion=34 //33 //18 //27 //'P' //27 //MAX 18 for SDCARD READ/WRITE Permissions without adding more code
+        globalCompileSdkVersion=34 //33 //'android-Q' //28 //'android-P' //27a
+        globalNdkVersion="26.1.10909125" //"25.2.9519653" // if desired, ~3 build.gradle files this: -> ndkVersion project.ext.globalNdkVersion; it's also used in docker build
         //globalMultiDexEnabled=true
     }
     //project.android.ndkDirectory="C:\\_me\\android\\sdk\\ndk-bundle"
+
 
 }

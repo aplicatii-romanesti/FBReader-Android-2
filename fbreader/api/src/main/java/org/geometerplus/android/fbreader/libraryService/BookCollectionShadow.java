@@ -23,6 +23,7 @@ import java.util.*;
 
 import android.app.Service;
 import android.content.*;
+import android.os.Build;
 import android.os.IBinder;
 import android.os.RemoteException;
 
@@ -658,8 +659,8 @@ public class BookCollectionShadow extends AbstractBookCollection<Book> implement
 		}
 
 		if (myContext != null) {
-			myContext.registerReceiver(myReceiver, new IntentFilter(FBReaderIntents.Event.LIBRARY_BOOK));
-			myContext.registerReceiver(myReceiver, new IntentFilter(FBReaderIntents.Event.LIBRARY_BUILD));
+			myContext.registerReceiver(myReceiver, new IntentFilter(FBReaderIntents.Event.LIBRARY_BOOK), Context.RECEIVER_NOT_EXPORTED); //aplicatii.romanesti added Context.RECEIVER_NOT_EXPORTED pt Andoird 14
+			myContext.registerReceiver(myReceiver, new IntentFilter(FBReaderIntents.Event.LIBRARY_BUILD), Context.RECEIVER_NOT_EXPORTED); //aplicatii.romanesti added Context.RECEIVER_NOT_EXPORTED pt Andoird 14
 		}
 	}
 

@@ -19,6 +19,8 @@
 
 package org.nicolae.search_molitfelnic;
 
+import static org.geometerplus.android.fbreader.api.FBReaderIntents.DEFAULT_PACKAGE;
+
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
@@ -47,6 +49,7 @@ public class LocalLibrarySearchActivity extends Activity implements SearchManage
 			final String pattern = intent.getStringExtra(SearchManager.QUERY);
 			if (pattern != null && pattern.length() > 0) {
 				Intent newIntent = new Intent(LibraryActivity.START_SEARCH_ACTION, null, this, LibraryActivity.class);
+				newIntent.setPackage(DEFAULT_PACKAGE); // starting 2023 (api 33/and 13) due to https://support.google.com/faqs/answer/10399926
 				newIntent.putExtra(SearchManager.QUERY, pattern);
 				startActivity(newIntent);
 			}
@@ -56,6 +59,7 @@ public class LocalLibrarySearchActivity extends Activity implements SearchManage
 			final String bookStr = intent.getExtras().getString(SearchManager.EXTRA_DATA_KEY);
 
 			Intent newIntent = new Intent(LOCAL_SEARCH_RESULT_VIEW);
+			newIntent.setPackage(DEFAULT_PACKAGE); // starting 2023 (api 33/and 13) due to https://support.google.com/faqs/answer/10399926
 			newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			newIntent.setData( Uri.fromParts("local-search-result","book-id",bookStr));
 

@@ -225,7 +225,7 @@ public class BookDownloaderService extends Service {
 		);
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
 		final Intent intent = success ? getFBReaderIntent(file) : new Intent();
-		final PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);
+		final PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 		//notification.setLatestEventInfo(getApplicationContext(), title, contentText, contentIntent);
 		return notification;
 	}
@@ -236,7 +236,7 @@ public class BookDownloaderService extends Service {
 		contentView.setTextViewText(R.id.download_notification_progress_text, "");
 		contentView.setProgressBar(R.id.download_notification_progress_bar, 100, 0, true);
 
-		final PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(), 0);
+		final PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(), PendingIntent.FLAG_IMMUTABLE);
 
 		final Notification notification = new Notification();
 		notification.icon = android.R.drawable.stat_sys_download;

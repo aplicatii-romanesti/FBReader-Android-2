@@ -5,6 +5,7 @@ dependencies {
 }
 
 android {
+	namespace = 'org.fbreader.resources'
 	compileSdkVersion project.ext.globalCompileSdkVersion
 	buildToolsVersion project.ext.globalBuildToolsVersion
 
@@ -35,4 +36,8 @@ android {
 		release {
 		}
 	}
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
 }

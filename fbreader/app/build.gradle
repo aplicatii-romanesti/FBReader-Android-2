@@ -1,6 +1,6 @@
 buildscript {
 	repositories {
-		jcenter()
+		// jcenter() //deprecated
 		mavenCentral()
 		google()
 	}
@@ -17,9 +17,11 @@ dependencies {
     api project(':drag-sort-listview')
     api project(':android-filechooser')
     api project(':SuperToasts')
+//	implementation('com.github.johnpersano:supertoasts:1.2')
     api project(':AmbilWarna')
     api project(':zip-amse')
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+	//implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01' - working, but playstore was giving warnings
     implementation('com.googlecode.json-simple:json-simple:1.1.1') {
         exclude group: 'junit', module: 'junit'
     }
@@ -45,9 +47,15 @@ android {
 }
 
 android {
+	namespace = 'org.geometerplus.zlibrary.ui.android.aplicatii.romanesti'
 	compileSdkVersion project.ext.globalCompileSdkVersion
 	buildToolsVersion project.ext.globalBuildToolsVersion
 	useLibrary 'org.apache.http.legacy'
+
+	buildFeatures {
+		buildConfig true
+        aidl true
+    }
 
 	lintOptions {
 		abortOnError false
@@ -114,6 +122,7 @@ android {
             }
             applicationId 'org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic'
             signingConfig signingConfigs.release
+			// useAndroidX true
         }
         // // arm { //obsolete
         // // 	dimension 'abi'
@@ -164,6 +173,9 @@ android {
 			path 'src/main/jni/Android.mk'
 		}
 	}
+    // ndkVersion '21.0.6113669'
+	//ndkVersion '23.2.8568313' //'22.1.7171670'  //'25.2.9519653'
+	ndkVersion project.ext.globalNdkVersion
 
 //	task ndkBuild(type: Exec) {
 //		def ndkDir = project.android.ndkDirectory.absolutePath
@@ -177,6 +189,10 @@ android {
 	clean {
 		delete 'src/main/obj'
 		delete 'src/main/libs'
+	}
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_11
+		targetCompatibility JavaVersion.VERSION_11
 	}
 }
 

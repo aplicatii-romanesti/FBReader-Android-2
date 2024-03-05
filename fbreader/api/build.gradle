@@ -5,6 +5,7 @@ dependencies {
 }
 
 android {
+	namespace = 'org.geometerplus.android.fbreader.api' //'org.fbreader.api'
 	compileSdkVersion project.ext.globalCompileSdkVersion
 	buildToolsVersion project.ext.globalBuildToolsVersion
 
@@ -26,4 +27,11 @@ android {
 		versionCode 1
 		versionName "1.0"
 	}
+    buildFeatures {
+        aidl true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
 }

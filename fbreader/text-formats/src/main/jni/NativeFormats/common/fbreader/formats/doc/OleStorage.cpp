@@ -59,6 +59,8 @@ bool OleStorage::init(shared_ptr<ZLInputStream> stream, std::size_t streamSize) 
 		clear();
 		return false;
 	}
+
+    // for future, also look what others did: https://github.com/sunrenjie/FBReader-Android-2/commit/9d8f3d3afb71398a68c901fc3e4b060032d3ff52#diff-8df38e658a1d474d542b162590cfb304ddc7b2423f64f2059fa90dec863a3020
 	static const char OLE_SIGN[] = {(char)0xD0, (char)0xCF, (char)0x11, (char)0xE0, (char)0xA1, (char)0xB1, (char)0x1A, (char)0xE1, (char)0};
 	if (std::strncmp(oleBuf, OLE_SIGN, 8) != 0) {
 		clear();

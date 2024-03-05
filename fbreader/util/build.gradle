@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
+	namespace = 'org.fbreader.util'
 	compileSdkVersion project.ext.globalCompileSdkVersion
 	buildToolsVersion project.ext.globalBuildToolsVersion
 
@@ -20,4 +21,8 @@ android {
 		targetSdkVersion project.ext.globalTargetSdkVersion
 		versionName "1.0"
 	}
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
 }

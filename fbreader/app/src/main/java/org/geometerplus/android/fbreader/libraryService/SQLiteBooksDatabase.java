@@ -42,6 +42,7 @@ import org.geometerplus.zlibrary.text.view.ZLTextPositionWithTimestamp;
 import org.geometerplus.fbreader.book.*;
 
 import org.geometerplus.android.util.SQLiteUtil;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.BuildConfig;
 
 //final class SQLiteBooksDatabase extends BooksDatabase { //original
 final public class SQLiteBooksDatabase extends BooksDatabase { //aplicatii.romanesti hack for nicolae search hints
@@ -106,7 +107,7 @@ final public class SQLiteBooksDatabase extends BooksDatabase { //aplicatii.roman
 	private void migrate() {
 
 		/*final*/ int version = myDatabase.getVersion(); //remove final by aplicatii.romanesti
-		final int currentVersion = 63;
+		final int currentVersion = BuildConfig.VERSION_CODE; //65;
 		if (version >= currentVersion) {
 			return;
 		}

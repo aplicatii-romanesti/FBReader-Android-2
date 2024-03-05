@@ -47,7 +47,7 @@ public class ServiceNetworkContext extends AndroidNetworkContext {
 		final NotificationManager notificationManager =
 			(NotificationManager)myService.getSystemService(Context.NOTIFICATION_SERVICE);
 		final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-		final PendingIntent pendingIntent = PendingIntent.getActivity(myService, 0, intent, 0);
+		final PendingIntent pendingIntent = PendingIntent.getActivity(myService, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 		final String text =
 			ZLResource.resource("dialog")
 				.getResource("backgroundAuthentication")

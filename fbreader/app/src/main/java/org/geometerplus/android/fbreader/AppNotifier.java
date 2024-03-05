@@ -108,9 +108,9 @@ class AppNotifier implements FBReaderApp.Notifier {
 				.putExtra(BookDownloaderService.Key.BOOK_KIND, UrlInfo.Type.Book)
 				.putExtra(BookDownloaderService.Key.BOOK_TITLE, info.Title)
 				.putExtra(BookDownloaderService.Key.NOTIFICATION_TO_DISMISS_ID, notificationId);
-			builder.setContentIntent(PendingIntent.getActivity(myActivity, 0, downloadIntent, 0));
+			builder.setContentIntent(PendingIntent.getActivity(myActivity, 0, downloadIntent, PendingIntent.FLAG_IMMUTABLE));
 		} else {
-			builder.setContentIntent(PendingIntent.getActivity(myActivity, 0, new Intent(), 0));
+			builder.setContentIntent(PendingIntent.getActivity(myActivity, 0, new Intent(), PendingIntent.FLAG_IMMUTABLE));
 		}
 		notificationManager.notify(notificationId, builder.build());
 	}

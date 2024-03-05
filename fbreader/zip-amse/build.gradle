@@ -5,8 +5,11 @@ dependencies {
 }
 
 android {
+	namespace = 'org.amse.ys.zip'
 	compileSdkVersion project.ext.globalCompileSdkVersion
 	buildToolsVersion project.ext.globalBuildToolsVersion
+	ndkVersion project.ext.globalNdkVersion
+
 	lintOptions {
 		abortOnError false
 	}
@@ -51,4 +54,8 @@ android {
 	}
 	productFlavors {
 	}
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
 }

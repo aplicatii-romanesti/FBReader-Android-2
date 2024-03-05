@@ -23,6 +23,7 @@ import java.util.*;
 
 import android.app.Service;
 import android.content.*;
+import android.os.Build;
 import android.os.IBinder;
 import android.os.RemoteException;
 
@@ -189,8 +190,8 @@ public final class ConfigShadow extends Config implements ServiceConnection {
 		synchronized (this) {
 			myInterface = ConfigInterface.Stub.asInterface(service);
 			myContext.registerReceiver(
-				myReceiver, new IntentFilter(FBReaderIntents.Event.CONFIG_OPTION_CHANGE)
-			);
+				myReceiver, new IntentFilter(FBReaderIntents.Event.CONFIG_OPTION_CHANGE), Context.RECEIVER_NOT_EXPORTED
+			); //aplicatii.romanesti added Context.RECEIVER_NOT_EXPORTED pt Andoird 14
 		}
 
 		final List<Runnable> actions;

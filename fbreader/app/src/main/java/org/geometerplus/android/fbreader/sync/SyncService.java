@@ -123,7 +123,7 @@ public class SyncService extends Service implements IBookCollection.Listener<Boo
 
 	private PendingIntent syncIntent() {
 		return PendingIntent.getService(
-			this, 0, new Intent(this, getClass()).setAction(FBReaderIntents.Action.SYNC_SYNC), 0
+			this, 0, new Intent(this, getClass()).setAction(FBReaderIntents.Action.SYNC_SYNC), PendingIntent.FLAG_IMMUTABLE
 		);
 	}
 

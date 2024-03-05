@@ -1,6 +1,6 @@
 default.properties
 build.properties
-local.properties
+local.properties*
 build/
 scripts/resources/*.diff
 obj/
@@ -36,4 +36,5 @@ fbreader/app/x86/
 fbreader/app/x8664/
 fbreader/app/src/main/assets/data/SDCard/
 .externalNativeBuild
+*.log
 .cxx
