@@ -1,6 +1,7 @@
 #!/bin/bash
 set -xeo pipefail
 
+DATE_NOW=$(date +%Y%m%d%H%M%S)
 if [[ -z $1 ]]; then
   APPS_M_BASED=(BibliaOrtodoxa VietileSfintilor BibliotecaOrtodoxa Pidalion Liturghier ColindeUraturiPlugusor)
 else
@@ -11,6 +12,13 @@ set -u
 echo "Processing: $APPS_M_BASED"
 
 echo "1. Copy the ~/Books_with_HowTO (howto image incorporated) to the ~/Books folder (which we use)"
+
+if [[ -d ~/Books/ ]]; then
+  mv ~/Books/ ~/Books.${DATE_NOW}
+else
+  mkdir -p ~/Books/
+fi
+
 cp -rp ~/Books_with_HowTO/* ~/Books/
 
 echo "2. Going to start build one by one:"
