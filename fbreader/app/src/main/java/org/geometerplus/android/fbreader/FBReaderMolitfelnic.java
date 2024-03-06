@@ -70,6 +70,7 @@ import org.geometerplus.android.fbreader.tips.TipsActivity;
 import org.geometerplus.android.util.*;
 import org.nicolae.search_molitfelnic.LocalLibrarySearchActivity;
 
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
 public final class FBReaderMolitfelnic extends FBReaderMainActivity implements ZLApplicationWindow {
 	public static final int RESULT_DO_NOTHING = RESULT_FIRST_USER;
 	public static final int RESULT_REPAINT = RESULT_FIRST_USER + 1;

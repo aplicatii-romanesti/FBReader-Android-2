@@ -30,26 +30,26 @@
 			<intent-filter>
 				<action android:name="android.mfbreadermolitfelnic.action.ERROR"/>
 				<category android:name="android.intent.category.DEFAULT"/>
-				<data android:scheme="bookreadingexception" />
+				<data android:scheme="BookReadingException"/>
 			</intent-filter>
 		</activity>
 		<activity android:name="org.geometerplus.android.fbreader.crash.FixBooksDirectoryActivity" android:theme="@style/FBReader.Dialog" android:process=":crash" android:configChanges="orientation|keyboardHidden|screenSize" android:exported="false">
 			<intent-filter>
 				<action android:name="android.mfbreadermolitfelnic.action.CRASH"/>
 				<category android:name="android.intent.category.DEFAULT"/>
-				<data android:scheme="cachedcharstorageexception" />
+				<data android:scheme="CachedCharStorageException"/>
 			</intent-filter>
 		</activity>
 		<activity android:name="org.geometerplus.android.fbreader.crash.MissingNativeLibraryActivity" android:theme="@style/FBReader.Dialog" android:process=":crash" android:configChanges="orientation|keyboardHidden|screenSize" android:exported="false">
 			<intent-filter>
 				<action android:name="android.mfbreadermolitfelnic.action.CRASH"/>
 				<category android:name="android.intent.category.DEFAULT"/>
-				<data android:scheme="exceptionininitializererror" />
+				<data android:scheme="ExceptionInInitializerError"/>
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.mfbreadermolitfelnic.action.CRASH"/>
 				<category android:name="android.intent.category.DEFAULT"/>
-				<data android:scheme="unsatisfiedlinkerror" />
+				<data android:scheme="UnsatisfiedLinkError"/>
 			</intent-filter>
 		</activity>
 		<service android:name="org.geometerplus.android.fbreader.api.ApiService" android:launchMode="singleTask" android:exported="false">
