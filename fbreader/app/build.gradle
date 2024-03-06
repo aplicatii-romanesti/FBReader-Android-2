@@ -47,7 +47,7 @@ android {
 }
 
 android {
-	namespace = 'org.geometerplus.zlibrary.ui.android.aplicatii.romanesti'
+	namespace = 'org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic'
 	compileSdkVersion project.ext.globalCompileSdkVersion
 	buildToolsVersion project.ext.globalBuildToolsVersion
 	useLibrary 'org.apache.http.legacy'

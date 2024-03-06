@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- manifest's package="org.geometerplus.zlibrary.ui.android.aplicatii.romanesti" MOVED to build.gradle namespace, must for gradle 8.x -->
+<!-- manifest's package="org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic" MOVED to build.gradle namespace, must for gradle 8.x -->
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	package="org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic"
 	android:installLocation="auto"
 >
 	<!-- below is expected to be overwritten by the sdk vers in app.gradle -->
