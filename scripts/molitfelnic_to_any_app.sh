@@ -6,11 +6,10 @@ set -xe -o pipefail
 
 # INPUT
 
-
 if [[ -n $1 ]]; then
   echo "Name of the app being build provided as input is: $1"
-  TARGET_APP=$1
-  echo $TARGET_APP >../current_app.txt~
+  TARGET_APP="$1"
+  echo "${TARGET_APP}" >../current_app.txt~
 elif [[ -r ../current_app.txt~ ]]; then
   TARGET_APP=$(cat ../current_app.txt~)
 else
