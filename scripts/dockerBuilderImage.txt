@@ -1,1 +1,1 @@
-mingc/android-build-box:1.26.0
+mingc/android-build-box:1.28.0
