@@ -17,9 +17,10 @@ if [[ -d ~/Books/ ]]; then
   mv ~/Books/ ~/Books.old #${DATE_NOW}
 fi
 
-mkdir -p ~/Books/
-
+### COPY BOOKS
+unzip -q '~/ToateCartile_EPUB_latest.zip' -d ~/
 cp -rp ~/Books_with_HowTO/* ~/Books/
+#cd -
 
 echo "2. Going to start build one by one:"
 
