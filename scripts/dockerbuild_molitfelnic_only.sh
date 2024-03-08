@@ -63,11 +63,26 @@ cp ~/777/aplicatii.romanesti-release-key.keystore ~/FBReader-Android-2/
 #  exit 9
 #fi
 
-
 cd ~/
 docker rm -f fb || true
+if [[ -f ~/local.properties.docker ]]; then
+  cp local.properties.docker ${BUILD_FOLDER}/local.properties
+elif [[ -f ~/local.properties.docker ]]; then
+  cp local.properties.docker ${BUILD_FOLDER}/local.properties
+else
+  echo "ERROR, could not find local.properties.docker"
+  exit 3
+fi
 #docker run --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.1 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $GIT_BRANCH.log
-docker run --rm --name fb -ti -v `pwd`/FBReader-Android-2:/p $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease' | tee -a $NAME.log
+docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease' | tee -a $NAME.log
+
+if [[ -f ~/local.properties.outsidedocker ]]; then
+  cp local.properties.outsidedocker ${BUILD_FOLDER}/local.properties
+elif [[ -f ~/local.properties.docker ]]; then
+  cp local.properties.outsidedocker ${BUILD_FOLDER}/local.properties
+else
+  echo "WARNING, could not find local.properties.outsidedocker, Android studio builds might fail"
+fi
 # --rm
 
 #or only pack:
