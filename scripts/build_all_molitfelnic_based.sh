@@ -11,19 +11,20 @@ fi
 echo "Processing: ${APPS_M_BASED[$@]}"
 
 echo "0. this script works only when run in forlder ~/FBReader-Android-2/scripts"
-if [[ `pwd` != "/home/aplicatii-romanesti/FBReader-Android-2/scripts" ]]; then
-  echo "ERROR: This script works only when run in forlder ~/FBReader-Android-2/scripts"
-  exit 1
-fi
+#if [[ `pwd` != '/home/aplicatii-romanesti/FBReader-Android-2/scripts' ]]; then
+#  echo "ERROR: This script works only when run in forlder ~/FBReader-Android-2/scripts"
+#  exit 1
+#fi
 
 echo "1. Copy the ~/Books_with_HowTO (howto image incorporated) to the ~/Books folder (which we use)"
 
 if [[ -d ~/Books/ ]]; then
-  mv ~/Books/ ~/Books.old #${DATE_NOW}
+  rm -rf ~/Books.old 2>/dev/null || true
+  mv ~/Books ~/Books.old #${DATE_NOW}
 fi
 
 ### COPY BOOKS
-unzip -q '~/ToateCartile_EPUB_latest.zip' -d ~/
+unzip -q ~/ToateCartile_EPUB_latest.zip -d ~/
 cp -rp ~/Books_with_HowTO/* ~/Books/
 #cd -
 
