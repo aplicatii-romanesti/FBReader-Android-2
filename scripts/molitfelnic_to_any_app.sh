@@ -52,6 +52,14 @@ if [[ 0 -eq $(grep -c molitfelnic fbreader/app/build.gradle || true) ]]; then
 	exit
 fi
 
+# STEP 0.45
+echo "STEP 0.45 - check if we have to build Molitfelnic"
+
+if [[ "${TARGET_APP}" == "Molitfelnic" ]]; then
+  echo "We have to build Molitfelnic"
+  exit 0
+fi
+
 # STEP 0.5: Make sure we have the png icons avaialble && get app names
 echo "STEP 0.5: Make sure we have the png icons avaialble"
 if [[ ! -r ${RESOURCES_DIR}/drawable-hdpi/fbreader.png ]]; then

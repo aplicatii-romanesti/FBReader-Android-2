@@ -3,13 +3,19 @@ set -xeo pipefail
 
 DATE_NOW=$(date +%Y%m%d%H%M%S)
 if [[ -z $1 ]]; then
-  APPS_M_BASED=(BibliaOrtodoxa VietileSfintilor BibliotecaOrtodoxa Pidalion Liturghier ColindeUraturiPlugusor)
+  APPS_M_BASED=(BibliaOrtodoxa VietileSfintilor BibliotecaOrtodoxa Pidalion Liturghier ColindeUraturiPlugusor Molitfelnic)
 else
   APPS_M_BASED=("$@")
 fi
 
 set -u
 echo "Processing: ${APPS_M_BASED[$@]}"
+
+echo "0. this script works only when run in forlder ~/FBReader-Android-2/scripts"
+if [[ `pwd` != "/home/aplicatii-romanesti/FBReader-Android-2/scripts" ]]; then
+  echo "ERROR: This script works only when run in forlder ~/FBReader-Android-2/scripts"
+  exit 1
+fi
 
 echo "1. Copy the ~/Books_with_HowTO (howto image incorporated) to the ~/Books folder (which we use)"
 
