@@ -3,12 +3,11 @@ set -xeo pipefail
 
 DATE_NOW=$(date +%Y%m%d%H%M%S)
 if [[ -z $1 ]]; then
-  APPS_M_BASED=(BibliaOrtodoxa VietileSfintilor BibliotecaOrtodoxa Pidalion Liturghier ColindeUraturiPlugusor Molitfelnic)
+  APPS_M_BASED=(BibliaOrtodoxa VietileSfintilor BibliotecaOrtodoxa Pidalion Liturghier ColindeUraturiPlugusor Mineiele Molitfelnic)
 else
   APPS_M_BASED=("$@")
 fi
 
-set -u
 echo "Processing: ${APPS_M_BASED[$@]}"
 
 echo "0. this script works only when run in forlder ~/FBReader-Android-2/scripts"
