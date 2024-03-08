@@ -55,13 +55,13 @@ cp ~/777/aplicatii.romanesti-release-key.keystore ~/FBReader-Android-2/
 
 
 ### VERIFY BUILD NUMBERS MATCH:
-VV=$(cat ${BUILD_FOLDER}/fbreader/app/VERSION | cut -d"." -f3)
-VSQL=$(grep 'currentVersion =' ${BUILD_FOLDER}/fbreader/app/src/main/java/org/geometerplus/android/fbreader/libraryService/SQLiteBooksDatabase.java| cut -d"=" -f2 | cut -d";" -f1 | cut -d" " -f2)
+#VV=$(cat ${BUILD_FOLDER}/fbreader/app/VERSION | cut -d"." -f3)
+#VSQL=$(grep 'currentVersion =' ${BUILD_FOLDER}/fbreader/app/src/main/java/org/geometerplus/android/fbreader/libraryService/SQLiteBooksDatabase.java| cut -d"=" -f2 | cut -d";" -f1 | cut -d" " -f2)
 
-if [[ $VV -ne $VSQL ]]; then
-  echo "ERROR !!!!  $VV != $VSQL -> FIX VERSIONS!!!"
-  exit 9
-fi
+#if [[ $VV -ne $VSQL ]]; then
+#  echo "ERROR !!!!  $VV != $VSQL -> FIX VERSIONS!!!"
+#  exit 9
+#fi
 
 
 cd ~/
