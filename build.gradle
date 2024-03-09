@@ -41,7 +41,7 @@ allprojects {
         // globalMaxSdkVersion=33  // ideally never used (29-andr10; 30/31-andr11; 32-and12; 33-and13;)
         globalTargetSdkVersion=34 //33 //18 //27 //'P' //27 //MAX 18 for SDCARD READ/WRITE Permissions without adding more code
         globalCompileSdkVersion=34 //33 //'android-Q' //28 //'android-P' //27a
-        globalNdkVersion="26.1.10909125" //"25.2.9519653" // if desired, ~3 build.gradle files this: -> ndkVersion project.ext.globalNdkVersion; it's also used in docker build
+        globalNdkVersion="26.2.11394342" //"26.1.10909125" //"25.2.9519653" // if desired, ~3 build.gradle files this: -> ndkVersion project.ext.globalNdkVersion; it's also used in docker build
         //globalMultiDexEnabled=true
     }
     //project.android.ndkDirectory="C:\\_me\\android\\sdk\\ndk-bundle"
