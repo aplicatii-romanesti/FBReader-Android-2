@@ -37,7 +37,7 @@ allprojects {
     project.ext {
         globalBuildToolsVersion="34.0.0" //"34.0.0 rc3" //"33.0.2" //"30.0.3"//"33.0.2"// //"29.0.2"//"33.0.2" // //"28.0.3" //29.0.5" 29.0.2 //28.0.3" //"27.0.3" //"28.0.0-rc1" // '28.0.0 rc1' //fails with errors on 29.x
         // for buildtools 31+, needs gradle 7 & gradleplugin 7; alternatively rename d8 to dx
-        globalMinSdkVersion=28 //moving from 30 to 33 due to the need to add Context.RECEIVER_NOT_EXPORTED/RECEIVER_EXPORTED pt Andoird 14+  //33 //release only for and13+ //24 //24 //24(7.0) 16 //ideally keep 16; for SYSTEM_UI_FLAG_IMMERSIVE_STICKY, do an IF, as we need 19 (KitKat) there
+        globalMinSdkVersion=24 //moving from 30 to 33 due to the need to add Context.RECEIVER_NOT_EXPORTED/RECEIVER_EXPORTED pt Andoird 14+  //33 //release only for and13+ //24 //24 //24(7.0) 16 //ideally keep 16; for SYSTEM_UI_FLAG_IMMERSIVE_STICKY, do an IF, as we need 19 (KitKat) there
         // globalMaxSdkVersion=33  // ideally never used (29-andr10; 30/31-andr11; 32-and12; 33-and13;)
         globalTargetSdkVersion=34 //33 //18 //27 //'P' //27 //MAX 18 for SDCARD READ/WRITE Permissions without adding more code
         globalCompileSdkVersion=34 //33 //'android-Q' //28 //'android-P' //27a
