@@ -65,7 +65,7 @@ else
   exit 3
 fi
 #docker run --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.1 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $GIT_BRANCH.log
-docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease' | tee -a $NAME.log
+docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/bundleRelease assembleRelease' | tee -a $NAME.log
 
 if [[ -f ~/local.properties.outsidedocker ]]; then
   cp local.properties.outsidedocker ${BUILD_FOLDER}/local.properties
