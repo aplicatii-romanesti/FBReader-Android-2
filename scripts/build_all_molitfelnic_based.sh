@@ -3,7 +3,7 @@ set -xeo pipefail
 
 DATE_NOW=$(date +%Y%m%d%H%M%S)
 if [[ -z $1 ]]; then
-  APPS_M_BASED=(BibliaOrtodoxa VietileSfintilor BibliotecaOrtodoxa Pidalion Liturghier ColindeUraturiPlugusor Mineiele Molitfelnic)
+  APPS_M_BASED=(BibliaOrtodoxa VietileSfintilor BibliotecaOrtodoxa Pidalion Liturghier ColindeUraturiPlugusor Mineiele Evanghelia Molitfelnic)
 else
   APPS_M_BASED=("$@")
 fi
