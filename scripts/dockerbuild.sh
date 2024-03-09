@@ -80,8 +80,13 @@ fi
 #docker run --rm --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.0 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease'
 
 ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk | tee -a $NAME.log
+ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fatRelease/app-fat-release.aab | tee -a $NAME.log
 cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
-ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fat/release/app-fat-release.aab | tee -a $NAME.log
-cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fat/release/app-fat-release.aab ~/${NAME}.aab
+cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fatRelease/app-fat-release.aab ~/${NAME}.aab
+rm -f ~/${APP}.apk 2>/dev/null || tru
+rm -f ~/${APP}.aab 2>/dev/null || true
+ln -sf ~/${NAME}.apk ~/${APP}.apk
+ln -sf ~/${NAME}.aab ~/${APP}.aab
+
 echo "Ended at: `date` (was started at $DATE_START" | tee -a $NAME.log
 
