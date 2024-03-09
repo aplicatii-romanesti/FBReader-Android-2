@@ -40,12 +40,12 @@ done
 echo "Trying also ftp upload using ./ftp_upload_apk_to_phone.sh .apk"
 for app in "${APPS_M_BASED[@]}"; do
   echo "ftp-ing $app"
-  ./scripts/ftp_upload_apk_to_phone.sh ${app}.apk
-  ./scripts/ftp_upload_apk_to_phone.sh ${app}.aab
+  ./ftp_upload_apk_to_phone.sh ${app}.apk
+  ./ftp_upload_apk_to_phone.sh ${app}.aab
 done
 
 echo "TO retry ftp upload, do: "
 for app in "${APPS_M_BASED[@]}"; do
-  echo "./scripts/ftp_upload_apk_to_phone.sh ${app}.apk"
-  echo "./scripts/ftp_upload_apk_to_phone.sh ${app}.aab"
+  echo "./ftp_upload_apk_to_phone.sh ${app}.apk"
+  echo "./ftp_upload_apk_to_phone.sh ${app}.aab"
 done
