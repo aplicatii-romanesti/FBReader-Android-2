@@ -65,7 +65,7 @@ else
   exit 3
 fi
 #docker run --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.1 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $GIT_BRANCH.log
-docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean bundleRelease assembleRelease' | tee -a $NAME.log
+docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ bundleRelease assembleRelease' | tee -a $NAME.log
 
 if [[ -f ~/local.properties.outsidedocker ]]; then
   cp local.properties.outsidedocker ${BUILD_FOLDER}/local.properties
@@ -80,6 +80,8 @@ fi
 #docker run --rm --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.0 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease'
 
 ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk | tee -a $NAME.log
-cp -f ${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
+cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
+ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fat/release/app-fat-release.aab | tee -a $NAME.log
+cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fat/release/app-fat-release.aab ~/${NAME}.aab
 echo "Ended at: `date` (was started at $DATE_START" | tee -a $NAME.log
 
