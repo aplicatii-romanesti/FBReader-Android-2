@@ -14,7 +14,7 @@ buildscript {
         //classpath 'com.android.tools.build:gradle:3.6.0'
         // classpath 'com.android.tools.build:gradle:4.0.0' //working 2023
         // classpath 'com.android.tools.build:gradle:8.1.0-beta01' // working and in production with sdk 33, cu florin;
-        classpath 'com.android.tools.build:gradle:8.3.0-rc02' //8.3.0-beta01' //8.3.0-alpha18
+        classpath 'com.android.tools.build:gradle:8.3.0' //8.3.0-beta01' //8.3.0-alpha18
         //classpath 'com.android.tools.build:gradle:8.4.0-alpha01' //8.3.0-alpha18
         // req. min graded version 6.1.1// works 8.0.2
 //        classpath 'com.android.tools.build:gradle:8.1.0-alpha08'
