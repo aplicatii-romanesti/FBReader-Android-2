@@ -3,12 +3,15 @@ set -xeo pipefail
 
 DATE_NOW=$(date +%Y%m%d%H%M%S)
 if [[ -z $1 ]]; then
-  APPS_M_BASED=(BibliaOrtodoxa VietileSfintilor BibliotecaOrtodoxa Pidalion Liturghier ColindeUraturiPlugusor Mineiele Evanghelia Molitfelnic)
+  #APPS_M_BASED_MANUAL_LIST=(Molitfelnic Apostolul BibliaOrtodoxa BibliotecaOrtodoxa ColindeUraturiPlugusor Evanghelia Liturghier Mineiele Pidalion Sinaxar Triodul VietileSfintilor )
+  echo "Going to autodetect entire set"
+  APPS_M_BASED=(Molitfelnic $(ls -d ../molitfelnic_to_any_app_res/[A-Z]* | cut -d/ -f3) )
 else
+  echo "input received, cancel autodetect, processing requested only:"
   APPS_M_BASED=("$@")
 fi
 
-echo "Processing: ${APPS_M_BASED[$@]}"
+echo "Processing    : ${APPS_M_BASED[@]}"
 
 echo "0. this script works only when run in forlder ~/FBReader-Android-2/scripts"
 #if [[ `pwd` != '/home/aplicatii-romanesti/FBReader-Android-2/scripts' ]]; then
