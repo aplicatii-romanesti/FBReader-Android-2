@@ -135,24 +135,27 @@ echo "STEP 2: Replace application name and its search hint"
 cat <<EOF >fbreader/app/src/main/res/values/strings.xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">${NEWAPP_NAME}</string>
-  <string name="search_hint">${NEWAPP_SEARCH_HINT}</string>
+       <string name="app_name">${NEWAPP_NAME}</string>
+    <string name="search_hint">${NEWAPP_SEARCH_HINT}</string>
 </resources>
 
 EOF
 
 echo "STEP 3: Replace names of files and folders:"
 # STEP 3: Replace names of files and folders:
-git mv fbreader/app/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_molitfelnic/ fbreader/app/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_${NEWAPP_SMALL}/
+if [[ "${TARGET_APP}" != "Molitfelnic" ]]; then
+  git mv fbreader/app/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_molitfelnic/ fbreader/app/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_${NEWAPP_SMALL}/
 
-git mv fbreader/app/src/main/java/org/nicolae/search_molitfelnic/ fbreader/app/src/main/java/org/nicolae/search_${NEWAPP_SMALL}/
+  git mv fbreader/app/src/main/java/org/nicolae/search_molitfelnic/ fbreader/app/src/main/java/org/nicolae/search_${NEWAPP_SMALL}/
 
-git mv fbreader/common/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_molitfelnic/ fbreader/common/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_${NEWAPP_SMALL}/
+  git mv fbreader/common/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_molitfelnic/ fbreader/common/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_${NEWAPP_SMALL}/
 
-git mv fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplicationMolitfelnic.java fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication${NEWAPP_CAMEL}.java
+  git mv fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplicationMolitfelnic.java fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication${NEWAPP_CAMEL}.java
 
-git mv fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderMolitfelnic.java fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReader${NEWAPP_CAMEL}.java
-
+  git mv fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderMolitfelnic.java fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReader${NEWAPP_CAMEL}.java
+else
+  echo "We have to build Molitfelnic, skipped git mv"
+fi
 echo "Sanity 1"
 grep Application fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication${NEWAPP_CAMEL}.java
 
