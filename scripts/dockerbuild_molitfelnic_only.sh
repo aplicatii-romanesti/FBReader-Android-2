@@ -2,6 +2,10 @@
 set -Eexo pipefail
 DATE_START=`date +'%Y%m%d_%H%M%S'`
 
+echo "should be deprecated, use the dockerbuild.sh that supports Molitfelnic also, just add books before"
+
+read
+
 APP=Molitfelnic
 
 cd ~/
@@ -44,7 +48,7 @@ echo "STEP 0.8: determine&copy required Books:"
 
 ##################
 
-cp ~/777/aplicatii.romanesti-release-key.keystore ~/FBReader-Android-2/
+cp ~/777/aplicatii.romanesti-release-key.keystore $BUILD_FOLDER/
 
 #mkdir -p ~/FBReader-Android-2/fbreader/app/src/main/assets/data/SDCard/Books/
 #rm -rf ~/FBReader-Android-2/fbreader/app/src/main/assets/data/SDCard/Books/*
@@ -55,6 +59,7 @@ cp ~/777/aplicatii.romanesti-release-key.keystore ~/FBReader-Android-2/
 
 
 ### VERIFY BUILD NUMBERS MATCH:
+# NO LONGER NEEDED, it's automated ->> final int currentVersion = BuildConfig.VERSION_CODE;
 #VV=$(cat ${BUILD_FOLDER}/fbreader/app/VERSION | cut -d"." -f3)
 #VSQL=$(grep 'currentVersion =' ${BUILD_FOLDER}/fbreader/app/src/main/java/org/geometerplus/android/fbreader/libraryService/SQLiteBooksDatabase.java| cut -d"=" -f2 | cut -d";" -f1 | cut -d" " -f2)
 
@@ -64,7 +69,7 @@ cp ~/777/aplicatii.romanesti-release-key.keystore ~/FBReader-Android-2/
 #fi
 
 cd ~/
-docker rm -f fb || true
+docker rm -f fb 2>&- || true
 if [[ -f ~/local.properties.docker ]]; then
   cp local.properties.docker ${BUILD_FOLDER}/local.properties
 elif [[ -f ~/local.properties.docker ]]; then
@@ -74,7 +79,7 @@ else
   exit 3
 fi
 #docker run --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.1 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $GIT_BRANCH.log
-docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease' | tee -a $NAME.log
+docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ bundleRelease assembleRelease' | tee -a $NAME.log
 
 if [[ -f ~/local.properties.outsidedocker ]]; then
   cp local.properties.outsidedocker ${BUILD_FOLDER}/local.properties
@@ -88,7 +93,13 @@ fi
 #or only pack:
 #docker run --rm --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.0 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease'
 
-ls -la ~/FBReader-Android-2/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk | tee -a $NAME.log
-cp -f ~/FBReader-Android-2/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
+ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk | tee -a $NAME.log
+ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fatRelease/app-fat-release.aab | tee -a $NAME.log
+cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
+cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fatRelease/app-fat-release.aab ~/${NAME}.aab
+rm -f ~/${APP}.apk 2>/dev/null || tru
+rm -f ~/${APP}.aab 2>/dev/null || true
+ln -sf ~/${NAME}.apk ~/${APP}.apk
+ln -sf ~/${NAME}.aab ~/${APP}.aab
 echo "Ended at: `date` (was started at $DATE_START" | tee -a $NAME.log
 

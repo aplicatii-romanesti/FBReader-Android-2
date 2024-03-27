@@ -44,7 +44,7 @@ if [[ ${GIT_BRANCH} != "molitfelnic" ]]; then
 	exit
 fi
 
-# STEP 0.4 Pre-Sanity: Make sure there was a git reset HEAD: 
+# STEP 0.4 Pre-Sanity: Make sure there was a git reset HEAD:
 echo "STEP 0.4 Pre-Sanity: Make sure there was a git reset --hard HEAD (or similar):"
 if [[ 0 -eq $(grep -c molitfelnic fbreader/app/build.gradle || true) ]]; then
 	echo "the grep applicationId fbreader/app/build.gradle does not find molitfelnic; you may want to do git reset --hard HEAD "
@@ -52,13 +52,14 @@ if [[ 0 -eq $(grep -c molitfelnic fbreader/app/build.gradle || true) ]]; then
 	exit
 fi
 
-# STEP 0.45
-echo "STEP 0.45 - check if we have to build Molitfelnic"
+# ## even if it's Molitfelnic, we simulate the same steps, so no need to exit here any longer, commetning out:
+# # STEP 0.45
+# echo "STEP 0.45 - check if we have to build Molitfelnic"
 
-if [[ "${TARGET_APP}" == "Molitfelnic" ]]; then
-  echo "We have to build Molitfelnic"
-  exit 0
-fi
+# if [[ "${TARGET_APP}" == "Molitfelnic" ]]; then
+#   echo "We have to build Molitfelnic"
+#   exit 0
+# fi
 
 # STEP 0.5: Make sure we have the png icons avaialble && get app names
 echo "STEP 0.5: Make sure we have the png icons avaialble"
@@ -66,7 +67,7 @@ if [[ ! -r ${RESOURCES_DIR}/drawable-hdpi/fbreader.png ]]; then
         echo "Could not find the icons in: ${RESOURCES_DIR}/drawable-hdpi/fbreader.png " && exit 1
 else
         cp -rpf ${RESOURCES_DIR}/drawable-*dpi ./fbreader/app/src/main/res/
-        cp -rpf ${RESOURCES_DIR}/drawable-*dpi ./fbreader/app/src/main/res/
+#        cp -rpf ${RESOURCES_DIR}/drawable-*dpi ./fbreader/app/src/main/res/
         #remove Krita projects
         find ./fbreader/app/src/main/res/ -type f -name '*.png.kra' | xargs rm -f
 fi
