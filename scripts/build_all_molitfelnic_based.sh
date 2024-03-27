@@ -1,5 +1,5 @@
 #!/bin/bash
-set -xeo pipefail
+set -eo pipefail
 
 DATE_NOW=$(date +%Y%m%d%H%M%S)
 if [[ -z $1 ]]; then
