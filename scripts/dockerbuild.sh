@@ -55,7 +55,7 @@ cp ~/777/aplicatii.romanesti-release-key.keystore $BUILD_FOLDER/
 # fi
 
 cd ~/
-docker rm -f fb || true
+docker rm -f fb 2>&- || true
 if [[ -f ~/local.properties.docker ]]; then
   cp local.properties.docker ${BUILD_FOLDER}/local.properties
 elif [[ -f ~/local.properties.docker ]]; then
@@ -64,6 +64,7 @@ else
   echo "ERROR, could not find local.properties.docker"
   exit 3
 fi
+
 #docker run --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.1 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $GIT_BRANCH.log
 docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ bundleRelease assembleRelease' | tee -a $NAME.log
 

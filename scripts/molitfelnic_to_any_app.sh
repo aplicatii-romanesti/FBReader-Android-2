@@ -67,6 +67,8 @@ if [[ ! -r ${RESOURCES_DIR}/drawable-hdpi/fbreader.png ]]; then
 else
         cp -rpf ${RESOURCES_DIR}/drawable-*dpi ./fbreader/app/src/main/res/
         cp -rpf ${RESOURCES_DIR}/drawable-*dpi ./fbreader/app/src/main/res/
+        #remove Krita projects
+        find ./fbreader/app/src/main/res/ -type f -name '*.png.kra' | xargs rm -f
 fi
 
 # STEP 0.55: Make sure we have the required resources
