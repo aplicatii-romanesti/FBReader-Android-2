@@ -47,7 +47,10 @@ docker rm -f fb || true
 cp local.properties.docker local.properties
 ###docker run --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.1 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $GIT_BRANCH.log
 set -x
-docker run --name fb -ti -v `pwd`:/p $(cat ./scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew --gradle-user-home=/p/.gradle/ assembleRelease' | tee -a $NAME.log
+#docker run --name fb -ti -v `pwd`:/p $(cat ./scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew --gradle-user-home=/p/.gradle/ assembleRelease' | tee -a $NAME.log
+export BUILD_FOLDER=${BUILD_FOLDBUILD_FOLDER:-`pwd`}
+# shellcheck disable=SC2046
+docker run --rm --name fb -ti -v "${BUILD_FOLDER}":/p -v "${BUILD_FOLDER}/../Android/Sdk":"/opt/android-sdk/" $(cat "${BUILD_FOLDER}/scripts/dockerBuilderImage.txt") bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ bundleRelease assembleRelease' | tee -a $NAME.log
 sudo rm -rf FBReader-Android-2-dev/fbreader/app/build/generated/not_namespaced_r_class_sources/* || true #so we will be able to use Android Studio as well afterwards...
 set +x
 # --rm
