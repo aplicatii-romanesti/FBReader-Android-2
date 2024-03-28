@@ -1,5 +1,5 @@
 #!/bin/bash
-set -vx
+#set -vx
 REL_FILE_NAMES=$@
 # If no param, defaulting to:
 REL_FILE_NAMES=${REL_FILE_NAMES:-"branch_x_latest.apk"}
