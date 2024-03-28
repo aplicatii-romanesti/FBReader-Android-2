@@ -1,5 +1,5 @@
 #!/bin/bash
-set -Eexo pipefail
+set -Eeo pipefail
 DATE_START=`date +'%Y%m%d_%H%M%S'`
 
 if [[ -n $1 ]]; then
