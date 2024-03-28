@@ -17,7 +17,7 @@ buildscript {
         //classpath 'com.android.tools.build:gradle:3.6.0'
         // classpath 'com.android.tools.build:gradle:4.0.0' //working 2023
         // classpath 'com.android.tools.build:gradle:8.1.0-beta01' // working and in production with sdk 33, cu florin;
-        classpath 'com.android.tools.build:gradle:8.3.1' //8.4.0-beta02' //8.3.0-beta01' //8.3.0-alpha18
+        classpath 'com.android.tools.build:gradle:8.4.0-beta02' // 8.3.1' //8.4.0-beta02' //8.3.0-beta01' //8.3.0-alpha18
         //classpath 'com.android.tools.build:gradle:8.4.0-alpha01' //8.3.0-alpha18
         // req. min graded version 6.1.1// works 8.0.2
 //        classpath 'com.android.tools.build:gradle:8.1.0-alpha08'
@@ -42,8 +42,9 @@ allprojects {
         // for buildtools 31+, needs gradle 7 & gradleplugin 7; alternatively rename d8 to dx
         globalMinSdkVersion=24 //moving from 30 to 33 due to the need to add Context.RECEIVER_NOT_EXPORTED/RECEIVER_EXPORTED pt Andoird 14+  //33 //release only for and13+ //24 //24 //24(7.0) 16 //ideally keep 16; for SYSTEM_UI_FLAG_IMMERSIVE_STICKY, do an IF, as we need 19 (KitKat) there
         // globalMaxSdkVersion=33  // ideally never used (29-andr10; 30/31-andr11; 32-and12; 33-and13;)
-        globalTargetSdkVersion="android-VanillaIceCream" //'android-35' //35 //33 //18 //27 //'P' //27 //MAX 18 for SDCARD READ/WRITE Permissions without adding more code
-        globalCompileSdkVersion="android-VanillaIceCream" //'android-35' //'VanillaIceCream' //35 //33 //'android-Q' //28 //'android-P' //27a
+        globalTargetSdkVersion="VanillaIceCream" //'34' //"VanillaIceCream" //'35' //35 //33 //18 //27 //'P' //27 //MAX 18 for SDCARD READ/WRITE Permissions without adding more code
+        globalCompileSdkVersion="android-VanillaIceCream" //'android-34' //"android-VanillaIceCream" //'android-35' //'VanillaIceCream' //35 //33 //'android-Q' //28 //'android-P' //27a
+        globalCompileSdkPreview = "VanillaIceCream" // TO BE USED
         globalNdkVersion="26.2.11394342" //"26.1.10909125" //"25.2.9519653" // if desired, ~3 build.gradle files this: -> ndkVersion project.ext.globalNdkVersion; it's also used in docker build
         //globalMultiDexEnabled=true
     }
