@@ -4,7 +4,9 @@ REL_FILE_NAMES=$@
 # If no param, defaulting to:
 #REL_FILE_NAMES=${REL_FILE_NAMES:-"branch_x_latest.apk"}
 
-REL_FILE_NAMES=($(ls -d ../molitfelnic_to_any_app_res/[A-Z]* | cut -d/ -f3 | awk '{print $1 ".apk" }' ))
+if [[ -z $REL_FILE_NAMES ]]; then
+  REL_FILE_NAMES=($(ls -d ../molitfelnic_to_any_app_res/[A-Z]* | cut -d/ -f3 | awk '{print $1 ".apk" }' ))
+fi 
 . ~/ftp_upload_apk_to_phone.env
 
 for HOST in $HOSTS; do

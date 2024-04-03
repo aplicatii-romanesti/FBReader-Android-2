@@ -99,6 +99,10 @@ while IFS= read B ; do
 	ls -la "${BOOKS_DIR}/${B}"
 	cp -rfp "${BOOKS_DIR}/${B}" ./fbreader/app/src/main/assets/data/SDCard/Books/
 	ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/
+	if [[ $(ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/ | wc -l ) -lt 4 ]]; then
+	  echo "ERROR; no book found!"
+	  exit 77
+	fi
 done < ${RESOURCES_DIR}/epubs.list
 
 # STEP 0.9: determine name of the new app and other metadata details
