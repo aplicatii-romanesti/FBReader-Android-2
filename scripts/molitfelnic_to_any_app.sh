@@ -22,6 +22,16 @@ set -u
 
 echo "TARGET_APP=$TARGET_APP"
 
+# Make sure we are in the right directory:
+echo "STEP 0.2: Pre-Sanity: Make sure we are in the right directory:"
+cd ..
+pwd
+if [[ ! -r .gitignore ]]; then
+        echo "Not in the right directory... ; Call me from scripts directory of the molitfelnic branch "
+        exit
+fi
+
+echo "STEP 0.25: basic vars"
 # BASE SETUP:
 RESOURCES_DIR="./molitfelnic_to_any_app_res/${TARGET_APP}"
 BOOKS_DIR=~/Books
@@ -34,15 +44,6 @@ if [[ ! -d $RESOURCES_DIR ]]; then
   exit 11
 else
   echo "OK, RESOURCES_DIR: $RESOURCES_DIR was found"
-fi
-
-# Make sure we are in the right directory:
-echo "STEP 0.2: Pre-Sanity: Make sure we are in the right directory:"
-cd ..
-pwd
-if [[ ! -r .gitignore ]]; then
-        echo "Not in the right directory... ; Call me from scripts directory of the molitfelnic branch "
-        exit
 fi
 
 # STEP 0.3 Pre-Sanity: Make sure we are on molitfelnic branch!:
