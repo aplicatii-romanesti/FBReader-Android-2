@@ -31,8 +31,8 @@ if [[ ! -r .gitignore ]]; then
         exit
 fi
 
-echo "STEP 0.25: basic vars"
 # BASE SETUP:
+echo "STEP 0.25: basic vars"
 RESOURCES_DIR="./molitfelnic_to_any_app_res/${TARGET_APP}"
 BOOKS_DIR=~/Books
 
@@ -98,7 +98,7 @@ if [[ ! -d ${BOOKS_DIR}/ ]]; then
 fi
 
 # STEP 0.7:  "Clean old books in the app (if any)"
-echo "Clean old books in the app (if any)"
+echo "STEP 0.7 - Clean old books in the app (if any)"
 mkdir -p ./fbreader/app/src/main/assets/data/SDCard/Books/
 rm -rf ./fbreader/app/src/main/assets/data/SDCard/Books/*
 cp -f ./fbreader/app/src/main/assets/data/intro/* ./fbreader/app/src/main/assets/data/SDCard/
@@ -112,19 +112,24 @@ if [[ ! -s ${RESOURCES_DIR}/epubs.list ]]; then
 else
   echo "OK, ${RESOURCES_DIR}/epubs.list exists and size>0"
 fi
-while IFS= read B ; do
+while IFS= read -r B ; do
 	echo B=$B
 	ls -la "${BOOKS_DIR}/${B}"
 	cp -rfp "${BOOKS_DIR}/${B}" ./fbreader/app/src/main/assets/data/SDCard/Books/
 	ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/
-	if [[ $(ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/ | wc -l ) -lt 4 ]]; then
-	  echo "ERROR; no book found!"
-	  exit 77
-	else
-	  echo "ok, added books:"
-	  ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/
-	fi
-done < ${RESOURCES_DIR}/epubs.list
+# done < ${RESOURCES_DIR}/epubs.list # this does not work when there is no EOL at the end of the file
+done <<< "$(cat ${RESOURCES_DIR}/epubs.list)" # this works even when there is no EOL at the end of the file
+
+
+# STEP 0.85: sanity
+echo "STEP 0.85: sanity"
+if [[ $(ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/ | wc -l ) -lt 4 ]]; then
+  echo "ERROR; no book found!"
+  exit 77
+else
+  echo "ok, added books:"
+  ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/
+fi
 
 # STEP 0.9: determine name of the new app and other metadata details
 echo "STEP 0.9: determine name of the new app and other metadata details:"
