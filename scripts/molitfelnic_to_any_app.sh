@@ -112,7 +112,7 @@ if [[ ! -s ${RESOURCES_DIR}/epubs.list ]]; then
 else
   echo "OK, ${RESOURCES_DIR}/epubs.list exists and size>0"
 fi
-while IFS= read -r B ; do
+while IFS= read B ; do
 	echo B=$B
 	ls -la "${BOOKS_DIR}/${B}"
 	cp -rfp "${BOOKS_DIR}/${B}" ./fbreader/app/src/main/assets/data/SDCard/Books/
