@@ -26,6 +26,16 @@ echo "TARGET_APP=$TARGET_APP"
 RESOURCES_DIR="./molitfelnic_to_any_app_res/${TARGET_APP}"
 BOOKS_DIR=~/Books
 
+echo "RESOURCES_DIR=$RESOURCES_DIR"
+echo "BOOKS_DIR=$BOOKS_DIR"
+
+if [[ ! -d $RESOURCES_DIR ]]; then
+  echo "Error, RESOURCES_DIR: $RESOURCES_DIR was not found"
+  exit 11
+else
+  echo "OK, RESOURCES_DIR: $RESOURCES_DIR was found"
+fi
+
 # Make sure we are in the right directory:
 echo "STEP 0.2: Pre-Sanity: Make sure we are in the right directory:"
 cd ..
@@ -94,6 +104,13 @@ cp -f ./fbreader/app/src/main/assets/data/intro/* ./fbreader/app/src/main/assets
 
 # STEP 0.8: determine&copy required Books"
 echo "STEP 0.8: determine&copy required Books:"
+
+if [[ ! -s ${RESOURCES_DIR}/epubs.list ]]; then
+  echo "could not find or empty file: ${RESOURCES_DIR}/epubs.list"
+  exit 22
+else
+  echo "OK, ${RESOURCES_DIR}/epubs.list exists and size>0"
+fi
 while IFS= read B ; do
 	echo B=$B
 	ls -la "${BOOKS_DIR}/${B}"
@@ -102,6 +119,9 @@ while IFS= read B ; do
 	if [[ $(ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/ | wc -l ) -lt 4 ]]; then
 	  echo "ERROR; no book found!"
 	  exit 77
+	else
+	  echo "ok, added books:"
+	  ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/
 	fi
 done < ${RESOURCES_DIR}/epubs.list
 
