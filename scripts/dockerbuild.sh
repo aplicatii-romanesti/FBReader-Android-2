@@ -83,12 +83,16 @@ fi
 
 ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk | tee -a $NAME.log
 ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fatRelease/app-fat-release.aab | tee -a $NAME.log
+ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/native-debug-symbols/fatRelease/native-debug-symbols.zip | tee -a $NAME.log
 cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
 cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fatRelease/app-fat-release.aab ~/${NAME}.aab
-rm -f ~/${APP}.apk 2>/dev/null || tru
+cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/native-debug-symbols/fatRelease/native-debug-symbols.zip ~/${NAME}-native-debug-symbols.zip || true
+rm -f ~/${APP}.apk 2>/dev/null || true
 rm -f ~/${APP}.aab 2>/dev/null || true
+rm -f ~/${APP}-native-debug-symbols.zip 2>/dev/null || true
 ln -sf ~/${NAME}.apk ~/${APP}.apk
 ln -sf ~/${NAME}.aab ~/${APP}.aab
+ln -sf ~/${NAME}-native-debug-symbols.zip ~/${APP}-native-debug-symbols.zip || true
 
 echo "Ended at: `date` (was started at $DATE_START" | tee -a $NAME.log
 
