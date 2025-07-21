@@ -28,7 +28,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 import org.geometerplus.android.fbreader.api.PluginApi;
 

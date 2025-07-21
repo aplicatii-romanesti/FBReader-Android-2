@@ -27,14 +27,14 @@ import android.widget.*;
 
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 import org.geometerplus.fbreader.Paths;
 import org.geometerplus.fbreader.tips.*;
 
 public class TipsActivity extends Activity {
-	public static final String INITIALIZE_ACTION = "android.fbreader.action.tips.INITIALIZE";
-	public static final String SHOW_TIP_ACTION = "android.fbreader.action.tips.SHOW_TIP";
+	public static final String INITIALIZE_ACTION = "android.mfbreadermolitfelnic.action.tips.INITIALIZE";
+	public static final String SHOW_TIP_ACTION = "android.mfbreadermolitfelnic.action.tips.SHOW_TIP";
 
 	private TipsManager myManager;
 

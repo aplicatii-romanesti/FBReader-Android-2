@@ -29,7 +29,7 @@ import androidx.core.app.NotificationCompat;
 
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 public class ServiceNetworkContext extends AndroidNetworkContext {
 	private final Service myService;

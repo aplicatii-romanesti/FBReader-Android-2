@@ -27,7 +27,7 @@ import org.geometerplus.android.fbreader.preferences.PreferenceActivity;
 import org.geometerplus.android.util.OrientationUtil;
 
 class ShowPreferencesAction extends FBAndroidAction {
-	ShowPreferencesAction(FBReader baseActivity, FBReaderApp fbreader) {
+	ShowPreferencesAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
 	}
 
@@ -38,6 +38,6 @@ class ShowPreferencesAction extends FBAndroidAction {
 		if (params.length == 1 && params[0] instanceof String) {
 			intent.putExtra(PreferenceActivity.SCREEN_KEY, (String)params[0]);
 		}
-		OrientationUtil.startActivityForResult(BaseActivity, intent, FBReader.REQUEST_PREFERENCES);
+		OrientationUtil.startActivityForResult(BaseActivity, intent, FBReaderMolitfelnic.REQUEST_PREFERENCES);
 	}
 }

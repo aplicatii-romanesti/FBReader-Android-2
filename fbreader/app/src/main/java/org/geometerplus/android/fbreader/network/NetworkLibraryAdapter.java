@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 import org.fbreader.util.android.ViewUtil;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 import org.geometerplus.fbreader.network.*;
 import org.geometerplus.fbreader.network.tree.*;

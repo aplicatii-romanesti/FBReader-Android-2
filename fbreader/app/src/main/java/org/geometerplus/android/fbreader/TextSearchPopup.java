@@ -22,7 +22,7 @@ package org.geometerplus.android.fbreader;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.fbreader.fbreader.ActionCode;
@@ -47,7 +47,7 @@ final class TextSearchPopup extends PopupPanel implements View.OnClickListener {
 	}
 
 	@Override
-	public synchronized void createControlPanel(FBReader activity, RelativeLayout root) {
+	public synchronized void createControlPanel(FBReaderMolitfelnic activity, RelativeLayout root) {
 		if (myWindow != null && activity == myWindow.getContext()) {
 			return;
 		}

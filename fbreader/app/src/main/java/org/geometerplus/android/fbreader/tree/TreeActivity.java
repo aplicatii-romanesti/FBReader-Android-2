@@ -37,7 +37,7 @@ import org.geometerplus.android.fbreader.util.AndroidImageSynchronizer;
 import org.geometerplus.android.util.OrientationUtil;
 
 public abstract class TreeActivity<T extends FBTree> extends ListActivity {
-	private static final String OPEN_TREE_ACTION = "android.fbreader.action.OPEN_TREE";
+	private static final String OPEN_TREE_ACTION = "android.mfbreadermolitfelnic.action.OPEN_TREE";
 
 	public static final String TREE_KEY_KEY = "TreeKey";
 	public static final String SELECTED_TREE_KEY_KEY = "SelectedTreeKey";
@@ -55,7 +55,7 @@ public abstract class TreeActivity<T extends FBTree> extends ListActivity {
 	@Override
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.library.UncaughtExceptionHandler(this));
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 	}
 

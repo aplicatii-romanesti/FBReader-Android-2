@@ -25,8 +25,8 @@ import android.view.View;
 
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.error.ErrorKeys;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.error.ErrorUtil;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.error.ErrorKeys;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.error.ErrorUtil;
 import org.geometerplus.android.fbreader.util.SimpleDialogActivity;
 
 public class BookReadingErrorActivity extends SimpleDialogActivity implements ErrorKeys {
@@ -44,7 +44,7 @@ public class BookReadingErrorActivity extends SimpleDialogActivity implements Er
 				final Intent sendIntent = new Intent(Intent.ACTION_SEND);
 				sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "aplicatii.romanesti@gmail.com" });//issues@fbreader.org
 				sendIntent.putExtra(Intent.EXTRA_TEXT, getIntent().getStringExtra(STACKTRACE));
-				sendIntent.putExtra(Intent.EXTRA_SUBJECT, "FBReader " + new ErrorUtil(BookReadingErrorActivity.this).getVersionName() + " book reading issue report");
+				sendIntent.putExtra(Intent.EXTRA_SUBJECT, "FBReaderMolitfelnic " + new ErrorUtil(BookReadingErrorActivity.this).getVersionName() + " book reading issue report");
 				sendIntent.setType("message/rfc822");
 				startActivity(sendIntent);
 				finish();

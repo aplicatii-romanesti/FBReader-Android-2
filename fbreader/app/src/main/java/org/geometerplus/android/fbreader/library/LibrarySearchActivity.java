@@ -27,7 +27,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import org.nicolae.test.LocalLibrarySearchActivity;
+import org.nicolae.search_molitfelnic.LocalLibrarySearchActivity;
 
 public class LibrarySearchActivity extends Activity {
 	@Override

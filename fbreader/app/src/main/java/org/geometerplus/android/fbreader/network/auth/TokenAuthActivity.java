@@ -32,9 +32,9 @@ import android.os.Bundle;
 
 import org.geometerplus.zlibrary.core.network.ZLNetworkException;
 import org.geometerplus.zlibrary.core.network.JsonRequest;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.network.SQLiteCookieDatabase;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.network.SQLiteCookieDatabase;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.BuildConfig;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.BuildConfig;
 
 public class TokenAuthActivity extends Activity {
 	private final ActivityNetworkContext NetworkContext = new ActivityNetworkContext(this);

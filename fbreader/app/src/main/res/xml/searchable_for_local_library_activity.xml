@@ -9,9 +9,9 @@
     android:voiceLanguageModel="free_form"
     android:voicePromptText="Spuneți numele unui sfânt sau un cuvânt cheie al cărții dorite"
     android:voiceLanguage="ro"
-    android:searchSuggestAuthority="org.nicolae.test.BookSearchHintProvider"
-    android:searchSuggestIntentAction="android.fbreader.action.LOCAL_SEARCH_VIEW"
-    android:searchSuggestIntentData="content://org.nicolae.test.BookSearchHintProvider/dictionary"
+    android:searchSuggestAuthority="org.nicolae.search_molitfelnic.BookSearchHintProvider"
+    android:searchSuggestIntentAction="android.mfbreadermolitfelnic.action.LOCAL_SEARCH_VIEW"
+    android:searchSuggestIntentData="content://org.nicolae.search_molitfelnic.BookSearchHintProvider/dictionary"
     android:searchSuggestSelection=" upper(suggest_text_1) like ?1 or upper(suggest_text_2) like ?1"
     android:searchSuggestThreshold="0" />
 

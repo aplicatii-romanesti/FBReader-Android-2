@@ -34,6 +34,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.*;
 
+import org.geometerplus.android.fbreader.FBReaderMolitfelnic;
 import org.geometerplus.zlibrary.core.filesystem.ZLFile;
 import org.geometerplus.zlibrary.core.filesystem.ZLPhysicalFile;
 import org.geometerplus.zlibrary.core.image.ZLImage;
@@ -42,9 +43,9 @@ import org.geometerplus.zlibrary.core.language.Language;
 import org.geometerplus.zlibrary.core.language.ZLLanguageUtil;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.image.ZLAndroidImageData;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.image.ZLAndroidImageManager;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.image.ZLAndroidImageData;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.image.ZLAndroidImageManager;
 
 import org.geometerplus.fbreader.Paths;
 import org.geometerplus.fbreader.book.*;
@@ -52,7 +53,6 @@ import org.geometerplus.fbreader.formats.PluginCollection;
 import org.geometerplus.fbreader.network.NetworkLibrary;
 import org.geometerplus.fbreader.network.HtmlUtil;
 
-import org.geometerplus.android.fbreader.FBReader;
 import org.geometerplus.android.fbreader.api.FBReaderIntents;
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 import org.geometerplus.android.fbreader.preferences.EditBookInfoActivity;
@@ -76,7 +76,7 @@ public class BookInfoActivity extends Activity implements IBookCollection.Listen
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		Thread.setDefaultUncaughtExceptionHandler(
-			new org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.library.UncaughtExceptionHandler(this)
+			new org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.library.UncaughtExceptionHandler(this)
 		);
 
 		final Intent intent = getIntent();
@@ -111,9 +111,9 @@ public class BookInfoActivity extends Activity implements IBookCollection.Listen
 //			finish();
 //		} else {
 //			startActivity(
-//				new Intent(getApplicationContext(), FBReader.class)
+//				new Intent(getApplicationContext(), FBReaderMolitfelnic.class)
 //					.setAction(Intent.ACTION_VIEW)
-//					.putExtra(FBReader.BOOK_PATH_KEY, myFile.getPath())
+//					.putExtra(FBReaderMolitfelnic.BOOK_PATH_KEY, myFile.getPath())
 //					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 //			);
 //		}
@@ -123,7 +123,7 @@ public class BookInfoActivity extends Activity implements IBookCollection.Listen
 				if (myDontReloadBook) {
 					finish();
 				} else {
-					FBReader.openBookActivity(BookInfoActivity.this, myBook, null);
+					FBReaderMolitfelnic.openBookActivity(BookInfoActivity.this, myBook, null);
 				}
 			}
 		});

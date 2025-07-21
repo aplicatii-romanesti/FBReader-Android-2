@@ -30,7 +30,7 @@ import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.text.view.ZLTextView;
 import org.geometerplus.zlibrary.text.view.ZLTextWordCursor;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 import org.geometerplus.fbreader.bookmodel.TOCTree;
 import org.geometerplus.fbreader.fbreader.FBReaderApp;
@@ -39,7 +39,7 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
 	final static String ID = "NavigationPopup";
 
 	private volatile NavigationWindow myWindow;
-	private volatile FBReader myActivity;
+	private volatile FBReaderMolitfelnic myActivity;
 	private volatile RelativeLayout myRoot;
 	private ZLTextWordCursor myStartPosition;
 	private final FBReaderApp myFBReader;
@@ -50,7 +50,7 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
 		myFBReader = fbReader;
 	}
 
-	public void setPanelInfo(FBReader activity, RelativeLayout root) {
+	public void setPanelInfo(FBReaderMolitfelnic activity, RelativeLayout root) {
 		myActivity = activity;
 		myRoot = root;
 	}
@@ -95,7 +95,7 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
 		}
 	}
 
-	private void createPanel(FBReader activity, RelativeLayout root) {
+	private void createPanel(FBReaderMolitfelnic activity, RelativeLayout root) {
 		if (myWindow != null && activity == myWindow.getContext()) {
 			return;
 		}

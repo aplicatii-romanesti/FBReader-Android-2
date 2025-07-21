@@ -30,7 +30,7 @@ import org.geometerplus.android.util.OrientationUtil;
 import org.geometerplus.android.util.PackageUtil;
 
 class ShowBookmarksAction extends FBAndroidAction {
-	ShowBookmarksAction(FBReader baseActivity, FBReaderApp fbreader) {
+	ShowBookmarksAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
 	}
 

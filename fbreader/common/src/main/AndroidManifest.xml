@@ -4,7 +4,7 @@
 >
 	<application>
 		<activity
-			android:name="org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.error.BugReportActivity"
+			android:name="org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.error.BugReportActivity"
 			android:label="FBReader crash"
 			android:theme="@style/FBReader.Activity"
 			android:process=":crash"

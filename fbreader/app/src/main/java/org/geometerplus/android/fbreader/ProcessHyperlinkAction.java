@@ -48,7 +48,7 @@ import org.geometerplus.android.util.OrientationUtil;
 import org.geometerplus.android.util.UIMessageUtil;
 
 class ProcessHyperlinkAction extends FBAndroidAction {
-	ProcessHyperlinkAction(FBReader baseActivity, FBReaderApp fbreader) {
+	ProcessHyperlinkAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
 	}
 

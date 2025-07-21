@@ -33,7 +33,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.content.DialogInterface.OnClickListener;
 
 import org.geometerplus.zlibrary.core.resources.ZLResource;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 public abstract class EditListDialogActivity extends ListActivity {
 	public static final int REQ_CODE = 001;

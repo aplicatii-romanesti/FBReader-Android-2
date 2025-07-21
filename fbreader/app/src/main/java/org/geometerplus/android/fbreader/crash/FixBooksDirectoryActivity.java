@@ -31,9 +31,9 @@ import org.geometerplus.zlibrary.core.resources.ZLResource;
 
 import org.geometerplus.fbreader.Paths;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
-import org.geometerplus.android.fbreader.FBReader;
+import org.geometerplus.android.fbreader.FBReaderMolitfelnic;
 import org.geometerplus.android.util.FileChooserUtil;
 
 public class FixBooksDirectoryActivity extends Activity {
@@ -80,7 +80,7 @@ public class FixBooksDirectoryActivity extends Activity {
 					public void onClick(View v) {
 						final String newDirectory = myDirectoryView.getText().toString();
 						tempDirectoryOption.setValue(newDirectory);
-						startActivity(new Intent(FixBooksDirectoryActivity.this, FBReader.class));
+						startActivity(new Intent(FixBooksDirectoryActivity.this, FBReaderMolitfelnic.class));
 						finish();
 					}
 				});

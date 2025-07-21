@@ -27,7 +27,7 @@ import org.fbreader.util.android.ViewUtil;
 
 import org.geometerplus.zlibrary.core.filesystem.ZLFile;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 import org.geometerplus.fbreader.library.*;
 import org.geometerplus.fbreader.book.Book;

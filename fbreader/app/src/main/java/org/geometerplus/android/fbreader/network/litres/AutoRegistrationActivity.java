@@ -29,7 +29,7 @@ import android.widget.*;
 import org.geometerplus.zlibrary.core.network.ZLNetworkAuthenticationException;
 import org.geometerplus.zlibrary.core.network.ZLNetworkException;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 import org.geometerplus.fbreader.network.authentication.litres.*;
 

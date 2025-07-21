@@ -27,7 +27,7 @@ import org.geometerplus.fbreader.fbreader.FBReaderApp;
 import org.geometerplus.android.util.OrientationUtil;
 
 class ShowTOCAction extends FBAndroidAction {
-	ShowTOCAction(FBReader baseActivity, FBReaderApp fbreader) {
+	ShowTOCAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
 	}
 

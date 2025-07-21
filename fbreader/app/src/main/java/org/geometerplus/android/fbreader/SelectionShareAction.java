@@ -28,7 +28,7 @@ import org.geometerplus.fbreader.fbreader.FBView;
 import org.geometerplus.fbreader.util.TextSnippet;
 
 public class SelectionShareAction extends FBAndroidAction {
-	SelectionShareAction(FBReader baseActivity, FBReaderApp fbreader) {
+	SelectionShareAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
 	}
 

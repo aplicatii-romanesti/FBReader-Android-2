@@ -34,7 +34,7 @@ import org.fbreader.common.options.SyncOptions;
 
 import org.geometerplus.zlibrary.core.network.*;
 import org.geometerplus.zlibrary.core.options.Config;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.network.SQLiteCookieDatabase;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.network.SQLiteCookieDatabase;
 import org.geometerplus.fbreader.book.*;
 import org.geometerplus.fbreader.network.sync.SyncData;
 import org.geometerplus.android.fbreader.api.FBReaderIntents;
@@ -42,7 +42,7 @@ import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 
 public class SyncService extends Service implements IBookCollection.Listener<Book> {
 	private static void log(String message) {
-		Log.d("FBReader.Sync", message);
+		Log.d("FBReaderMolitfelnic.Sync", message);
 	}
 
 	private enum Status {

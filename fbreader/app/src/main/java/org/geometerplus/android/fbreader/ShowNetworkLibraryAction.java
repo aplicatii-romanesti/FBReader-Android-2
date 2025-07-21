@@ -27,7 +27,7 @@ import org.geometerplus.android.fbreader.network.NetworkLibraryPrimaryActivity;
 import org.geometerplus.android.util.OrientationUtil;
 
 class ShowNetworkLibraryAction extends FBAndroidAction {
-	ShowNetworkLibraryAction(FBReader baseActivity, FBReaderApp fbreader) {
+	ShowNetworkLibraryAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
 	}
 

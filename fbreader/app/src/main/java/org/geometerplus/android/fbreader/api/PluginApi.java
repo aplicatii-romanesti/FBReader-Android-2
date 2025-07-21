@@ -11,8 +11,8 @@ import android.net.Uri;
 import android.os.*;
 
 public abstract class PluginApi {
-	public static final String ACTION_REGISTER = "android.fbreader.action.plugin.REGISTER";
-	public static final String ACTION_RUN = "android.fbreader.action.plugin.RUN";
+	public static final String ACTION_REGISTER = "android.mfbreadermolitfelnic.action.plugin.REGISTER";
+	public static final String ACTION_RUN = "android.mfbreadermolitfelnic.action.plugin.RUN";
 
 	public static abstract class PluginInfo extends BroadcastReceiver {
 		public static final String KEY = "actions";

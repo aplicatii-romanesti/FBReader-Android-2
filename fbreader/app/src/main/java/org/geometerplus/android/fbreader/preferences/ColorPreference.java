@@ -29,8 +29,8 @@ import yuku.ambilwarna.AmbilWarnaDialog;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.core.util.ZLColor;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.util.ZLAndroidColorUtil;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.util.ZLAndroidColorUtil;
 
 public abstract class ColorPreference extends Preference {
 	protected ColorPreference(Context context) {

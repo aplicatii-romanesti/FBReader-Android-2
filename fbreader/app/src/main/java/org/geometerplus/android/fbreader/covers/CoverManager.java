@@ -28,8 +28,8 @@ import android.widget.ImageView;
 import org.geometerplus.zlibrary.core.image.ZLImage;
 import org.geometerplus.zlibrary.core.image.ZLImageProxy;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.image.ZLAndroidImageData;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.image.ZLAndroidImageManager;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.image.ZLAndroidImageData;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.image.ZLAndroidImageManager;
 
 import org.geometerplus.fbreader.tree.FBTree;
 

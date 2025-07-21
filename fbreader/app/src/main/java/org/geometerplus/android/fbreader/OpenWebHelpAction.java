@@ -28,7 +28,7 @@ import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.fbreader.fbreader.FBReaderApp;
 
 class OpenWebHelpAction extends FBAndroidAction {
-	OpenWebHelpAction(FBReader baseActivity, FBReaderApp fbreader) {
+	OpenWebHelpAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
 	}
 

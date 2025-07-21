@@ -29,16 +29,16 @@ import android.os.*;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import org.geometerplus.android.fbreader.FBReaderMolitfelnic;
 import org.geometerplus.zlibrary.core.network.*;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.core.util.MimeType;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.network.SQLiteCookieDatabase;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.network.SQLiteCookieDatabase;
 
 import org.geometerplus.fbreader.network.urlInfo.UrlInfo;
 import org.geometerplus.fbreader.network.urlInfo.BookUrlInfo;
 
-import org.geometerplus.android.fbreader.FBReader;
 import org.geometerplus.android.fbreader.NotificationUtil;
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 import org.geometerplus.android.fbreader.network.auth.ServiceNetworkContext;
@@ -203,7 +203,7 @@ public class BookDownloaderService extends Service {
 	}
 
 	private Intent getFBReaderIntent(final File file) {
-		final Intent intent = new Intent(getApplicationContext(), FBReader.class);
+		final Intent intent = new Intent(getApplicationContext(), FBReaderMolitfelnic.class);
 		if (file != null) {
 			intent.setAction(Intent.ACTION_VIEW).setData(Uri.fromFile(file));
 		}

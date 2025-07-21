@@ -40,6 +40,19 @@ public abstract class BookUtil {
 		}
 	}
 
+	// aplicatii.romanesti
+	public static ZLResourceFile getFirstFile() {
+		ZLResourceFile file = ZLResourceFile.createResourceFile(
+				"data/SDCard/Books/Molitfelnicul necenzurat - mirem.ro,bibliotecaortodoxa.ro.epub" //getFirstFileBookReplaceTOKEN // don not remove this comment and keep it inline
+		);
+		if (file.exists()) {
+			return file;
+		}
+		// if above file was not found, default to the old getHelpFile
+		return BookUtil.getHelpFile();
+
+	}
+
 	public static ZLResourceFile getHelpFile() {
 		Locale.setDefault(new Locale("ro", "RO")); //aplicatii.romanesti added
 		final Locale locale = Locale.getDefault();

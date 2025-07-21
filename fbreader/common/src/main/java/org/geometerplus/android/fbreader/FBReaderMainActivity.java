@@ -27,8 +27,8 @@ import android.view.WindowManager;
 import com.github.johnpersano.supertoasts.SuperActivityToast;
 
 import org.geometerplus.zlibrary.core.options.*;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.library.*;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.view.AndroidFontUtil;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.library.*;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.view.AndroidFontUtil;
 
 import org.geometerplus.android.fbreader.dict.DictionaryUtil;
 

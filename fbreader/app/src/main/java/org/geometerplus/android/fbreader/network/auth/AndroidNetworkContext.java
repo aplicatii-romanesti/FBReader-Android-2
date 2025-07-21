@@ -28,7 +28,7 @@ import android.content.Context;
 import android.net.*;
 
 import org.geometerplus.zlibrary.core.network.*;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.BuildConfig;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.BuildConfig;
 
 public abstract class AndroidNetworkContext extends ZLNetworkContext {
 	private volatile ConnectivityManager myConnectivityManager;

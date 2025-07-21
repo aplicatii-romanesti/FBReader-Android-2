@@ -52,7 +52,7 @@ import org.geometerplus.fbreader.book.HighlightingStyle;
 import org.geometerplus.fbreader.book.IBookCollection;
 import org.geometerplus.zlibrary.core.options.ZLStringOption;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 import yuku.ambilwarna.widget.AmbilWarnaPrefWidgetView;
 
 public class EditBookmarkActivity extends Activity implements IBookCollection.Listener<Book> {

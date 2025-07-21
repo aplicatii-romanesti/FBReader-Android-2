@@ -29,7 +29,7 @@ import android.preference.*;
 import org.geometerplus.zlibrary.core.options.*;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.network.SQLiteCookieDatabase;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.network.SQLiteCookieDatabase;
 
 import org.geometerplus.android.util.OrientationUtil;
 
@@ -136,7 +136,7 @@ abstract class ZLPreferenceActivity extends android.preference.PreferenceActivit
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.library.UncaughtExceptionHandler(this));
 
 		SQLiteCookieDatabase.init(this);
 

@@ -41,14 +41,14 @@ import org.geometerplus.android.util.UIUtil;
 import org.geometerplus.android.util.PackageUtil;
 
 public abstract class Util implements UserRegistrationConstants {
-	static final String AUTHORISATION_ACTION = "android.fbreader.action.network.AUTHORISATION";
-	public static final String SIGNIN_ACTION = "android.fbreader.action.network.SIGNIN";
-	static final String TOPUP_ACTION = "android.fbreader.action.network.TOPUP";
-	static final String EXTRA_CATALOG_ACTION = "android.fbreader.action.network.EXTRA_CATALOG";
+	static final String AUTHORISATION_ACTION = "android.mfbreadermolitfelnic.action.network.AUTHORISATION";
+	public static final String SIGNIN_ACTION = "android.mfbreadermolitfelnic.action.network.SIGNIN";
+	static final String TOPUP_ACTION = "android.mfbreadermolitfelnic.action.network.TOPUP";
+	static final String EXTRA_CATALOG_ACTION = "android.mfbreadermolitfelnic.action.network.EXTRA_CATALOG";
 
-	public static final String ADD_CATALOG_ACTION = "android.fbreader.action.ADD_OPDS_CATALOG";
-	public static final String ADD_CATALOG_URL_ACTION = "android.fbreader.action.ADD_OPDS_CATALOG_URL";
-	public static final String EDIT_CATALOG_ACTION = "android.fbreader.action.EDIT_OPDS_CATALOG";
+	public static final String ADD_CATALOG_ACTION = "android.mfbreadermolitfelnic.action.ADD_OPDS_CATALOG";
+	public static final String ADD_CATALOG_URL_ACTION = "android.mfbreadermolitfelnic.action.ADD_OPDS_CATALOG_URL";
+	public static final String EDIT_CATALOG_ACTION = "android.mfbreadermolitfelnic.action.EDIT_OPDS_CATALOG";
 
 	public static Intent intentByLink(Intent intent, INetworkLink link) {
 		if (link != null) {

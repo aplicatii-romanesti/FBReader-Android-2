@@ -40,10 +40,10 @@ import org.geometerplus.android.util.PackageUtil;
 
 class ExternalFileOpener implements FBReaderApp.ExternalFileOpener {
 	private final String myPluginCode = new BigInteger(80, new Random()).toString();
-	private final FBReader myReader;
+	private final FBReaderMolitfelnic myReader;
 	private volatile AlertDialog myDialog;
 
-	ExternalFileOpener(FBReader reader) {
+	ExternalFileOpener(FBReaderMolitfelnic reader) {
 		myReader = reader;
 	}
 

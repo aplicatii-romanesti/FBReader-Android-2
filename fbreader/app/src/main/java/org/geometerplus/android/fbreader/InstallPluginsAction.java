@@ -24,7 +24,7 @@ import android.content.Intent;
 import org.geometerplus.fbreader.fbreader.FBReaderApp;
 
 class InstallPluginsAction extends FBAndroidAction {
-	InstallPluginsAction(FBReader baseActivity, FBReaderApp fbreader) {
+	InstallPluginsAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
 	}
 

@@ -30,31 +30,25 @@ import org.fbreader.common.options.SyncOptions;
 
 import org.geometerplus.zlibrary.core.application.ZLKeyBindings;
 import org.geometerplus.zlibrary.core.language.Language;
-import org.geometerplus.zlibrary.core.network.*;
 import org.geometerplus.zlibrary.core.options.*;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
 import org.geometerplus.zlibrary.text.view.style.*;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.library.ZLAndroidLibrary;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.view.ZLAndroidPaintContext;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.library.ZLAndroidLibrary;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.view.ZLAndroidPaintContext;
 
 import org.geometerplus.fbreader.Paths;
 import org.geometerplus.fbreader.fbreader.*;
 import org.geometerplus.fbreader.fbreader.options.*;
-import org.geometerplus.fbreader.network.sync.SyncData;
-import org.geometerplus.fbreader.network.sync.SyncUtil;
-import org.geometerplus.fbreader.tips.TipsManager;
 
-import org.geometerplus.android.fbreader.FBReader;
+import org.geometerplus.android.fbreader.FBReaderMolitfelnic;
 import org.geometerplus.android.fbreader.dict.DictionaryUtil;
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 import org.geometerplus.android.fbreader.network.auth.ActivityNetworkContext;
 import org.geometerplus.android.fbreader.preferences.fileChooser.FileChooserCollection;
 import org.geometerplus.android.fbreader.preferences.background.BackgroundPreference;
-import org.geometerplus.android.fbreader.sync.SyncOperations;
 
-import org.geometerplus.android.util.UIUtil;
 import org.geometerplus.android.util.DeviceType;
 
 public class PreferenceActivity extends ZLPreferenceActivity {
@@ -104,7 +98,7 @@ public class PreferenceActivity extends ZLPreferenceActivity {
 		config.requestAllValuesForGroup("Scrolling");
 		config.requestAllValuesForGroup("Colors");
 		config.requestAllValuesForGroup("Sync");
-		setResult(FBReader.RESULT_REPAINT);
+		setResult(FBReaderMolitfelnic.RESULT_REPAINT);
 
 		final ViewOptions viewOptions = new ViewOptions();
 		final MiscOptions miscOptions = new MiscOptions();

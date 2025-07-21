@@ -128,7 +128,7 @@ public class ZLNetworkUtil {
 	public static String getUserAgent() {
 		return String.format(
 			"%s/%s (Android %s, %s, %s)",
-			"FBReader",
+			"FBReaderMolitfelnic",
 			ZLibrary.Instance().getVersionName(),
 			android.os.Build.VERSION.RELEASE,
 			android.os.Build.DEVICE,

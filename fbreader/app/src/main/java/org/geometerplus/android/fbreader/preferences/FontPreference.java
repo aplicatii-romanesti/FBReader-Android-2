@@ -26,7 +26,7 @@ import android.content.Context;
 import org.geometerplus.zlibrary.core.options.ZLStringOption;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.view.AndroidFontUtil;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.view.AndroidFontUtil;
 
 class FontPreference extends ZLStringListPreference implements ReloadablePreference {
 	private final ZLStringOption myOption;

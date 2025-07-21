@@ -23,9 +23,9 @@ import org.geometerplus.fbreader.fbreader.FBAction;
 import org.geometerplus.fbreader.fbreader.FBReaderApp;
 
 abstract class FBAndroidAction extends FBAction {
-	protected final FBReader BaseActivity;
+	protected final FBReaderMolitfelnic BaseActivity;
 
-	FBAndroidAction(FBReader baseActivity, FBReaderApp fbreader) {
+	FBAndroidAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
 		super(fbreader);
 		BaseActivity = baseActivity;
 	}

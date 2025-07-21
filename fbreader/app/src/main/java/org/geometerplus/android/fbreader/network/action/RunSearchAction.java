@@ -27,7 +27,7 @@ import org.geometerplus.fbreader.network.NetworkLibrary;
 import org.geometerplus.fbreader.network.NetworkTree;
 import org.geometerplus.fbreader.network.tree.SearchCatalogTree;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 import org.geometerplus.android.fbreader.network.NetworkLibraryActivity;
 import org.geometerplus.android.fbreader.network.NetworkSearchActivity;

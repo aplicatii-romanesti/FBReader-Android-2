@@ -78,7 +78,7 @@ public class BookDownloader extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.library.UncaughtExceptionHandler(this));
 
 		final Intent intent = getIntent();
 		Uri uri = intent.getData();

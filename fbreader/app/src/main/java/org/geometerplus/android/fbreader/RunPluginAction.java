@@ -31,7 +31,7 @@ import org.geometerplus.android.util.OrientationUtil;
 class RunPluginAction extends FBAndroidAction {
 	private final Uri myUri;
 
-	RunPluginAction(FBReader baseActivity, FBReaderApp fbreader, Uri uri) {
+	RunPluginAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader, Uri uri) {
 		super(baseActivity, fbreader);
 		myUri = uri;
 	}

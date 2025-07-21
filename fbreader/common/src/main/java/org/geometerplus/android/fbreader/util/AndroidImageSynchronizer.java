@@ -30,8 +30,8 @@ import android.os.IBinder;
 
 import org.geometerplus.zlibrary.core.image.ZLImageProxy;
 import org.geometerplus.zlibrary.core.image.ZLImageSimpleProxy;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.image.ZLAndroidImageManager;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.image.ZLBitmapImage;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.image.ZLAndroidImageManager;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.image.ZLBitmapImage;
 
 import org.geometerplus.fbreader.formats.ExternalFormatPlugin;
 import org.geometerplus.fbreader.formats.PluginImage;

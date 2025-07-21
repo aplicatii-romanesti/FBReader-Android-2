@@ -35,11 +35,11 @@ import org.geometerplus.zlibrary.core.util.MiscUtil;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.core.options.ZLStringOption;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
 
 import org.geometerplus.fbreader.book.*;
 
-import org.geometerplus.android.fbreader.FBReader;
+import org.geometerplus.android.fbreader.FBReaderMolitfelnic;
 import org.geometerplus.android.fbreader.api.FBReaderIntents;
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 import org.geometerplus.android.util.*;
@@ -77,7 +77,7 @@ public class BookmarksActivity extends Activity implements IBookCollection.Liste
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.library.UncaughtExceptionHandler(this));
 		setContentView(R.layout.bookmarks);
 
 		setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
@@ -300,7 +300,7 @@ public class BookmarksActivity extends Activity implements IBookCollection.Liste
 		myCollection.saveBookmark(bookmark);
 		final Book book = myCollection.getBookById(bookmark.BookId);
 		if (book != null) {
-			FBReader.openBookActivity(this, book, bookmark);
+			FBReaderMolitfelnic.openBookActivity(this, book, bookmark);
 		} else {
 			UIMessageUtil.showErrorMessage(this, "cannotOpenBook");
 		}
