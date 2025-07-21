@@ -11,13 +11,14 @@ buildscript {
         // after updating here, update also gradle-wrapper.properties' param: distributionUrl
         // it might req. also studio upgrade, if AGP compatibility does not match. see: https://developer.android.com/studio/releases#android_gradle_plugin_and_android_studio_compatibility
 
-        // match with Android Gradle Plugin vesion:  https://developer.android.com/build/releases/gradle-plugin?buildsystem=ndk-build#updating-gradle
+        // match with Android Gradle Plugin version:  https://developer.android.com/build/releases/gradle-plugin?buildsystem=ndk-build#updating-gradle
         // for gradle version, see file gradle-wrapper.properties and put compat version from: https://gradle.org/releases/
 
         //classpath 'com.android.tools.build:gradle:3.6.0'
         // classpath 'com.android.tools.build:gradle:4.0.0' //working 2023
         // classpath 'com.android.tools.build:gradle:8.1.0-beta01' // working and in production with sdk 33, cu florin;
-        classpath 'com.android.tools.build:gradle:8.4.0-beta02' // 8.3.1' //8.4.0-beta02' //8.3.0-beta01' //8.3.0-alpha18
+        classpath 'com.android.tools.build:gradle:8.11.1'
+        // 8.3.1' //8.4.0-beta02' //8.3.0-beta01' //8.3.0-alpha18
         //classpath 'com.android.tools.build:gradle:8.4.0-alpha01' //8.3.0-alpha18
         // req. min graded version 6.1.1// works 8.0.2
 //        classpath 'com.android.tools.build:gradle:8.1.0-alpha08'
@@ -38,14 +39,14 @@ allprojects {
         }
     }
     project.ext {
-        globalBuildToolsVersion="35.0.0 rc3" //"34.0.0" //"34.0.0 rc3" //"33.0.2" //"30.0.3"//"33.0.2"// //"29.0.2"//"33.0.2" // //"28.0.3" //29.0.5" 29.0.2 //28.0.3" //"27.0.3" //"28.0.0-rc1" // '28.0.0 rc1' //fails with errors on 29.x
+        globalBuildToolsVersion="36" //"35.0.2" //"35.0.0 rc3" //"34.0.0" //"34.0.0 rc3" //"33.0.2" //"30.0.3"//"33.0.2"// //"29.0.2"//"33.0.2" // //"28.0.3" //29.0.5" 29.0.2 //28.0.3" //"27.0.3" //"28.0.0-rc1" // '28.0.0 rc1' //fails with errors on 29.x
         // for buildtools 31+, needs gradle 7 & gradleplugin 7; alternatively rename d8 to dx
-        globalMinSdkVersion=28 //moving from 30 to 33 due to the need to add Context.RECEIVER_NOT_EXPORTED/RECEIVER_EXPORTED pt Andoird 14+  //33 //release only for and13+ //24 //24 //24(7.0) 16 //ideally keep 16; for SYSTEM_UI_FLAG_IMMERSIVE_STICKY, do an IF, as we need 19 (KitKat) there
+        globalMinSdkVersion=35 //28 //Tadeu Feb2024 had target 34, and min 28 //moving from 30 to 33 due to the need to add Context.RECEIVER_NOT_EXPORTED/RECEIVER_EXPORTED pt Andoird 14+  //33 //release only for and13+ //24 //24 //24(7.0) 16 //ideally keep 16; for SYSTEM_UI_FLAG_IMMERSIVE_STICKY, do an IF, as we need 19 (KitKat) there
         // globalMaxSdkVersion=33  // ideally never used (29-andr10; 30/31-andr11; 32-and12; 33-and13;)
-        globalTargetSdkVersion="34" //"VanillaIceCream" //'34' //"VanillaIceCream" //'35' //35 //33 //18 //27 //'P' //27 //MAX 18 for SDCARD READ/WRITE Permissions without adding more code
-        globalCompileSdkVersion="android-34" //"android-VanillaIceCream" //'android-34' //"android-VanillaIceCream" //'android-35' //'VanillaIceCream' //35 //33 //'android-Q' //28 //'android-P' //27a
-        globalCompileSdkPreview = "VanillaIceCream" // TO BE USED
-        globalNdkVersion="26.3.11579264" //"26.2.11394342" //"26.1.10909125" //"25.2.9519653" // if desired, ~3 build.gradle files this: -> ndkVersion project.ext.globalNdkVersion; it's also used in docker build
+        globalTargetSdkVersion="36" //"VanillaIceCream" //'34' //"VanillaIceCream" //'35' //35 //33 //18 //27 //'P' //27 //MAX 18 for SDCARD READ/WRITE Permissions without adding more code
+        globalCompileSdkVersion="android-36" //"android-VanillaIceCream" //'android-34' //"android-VanillaIceCream" //'android-35' //'VanillaIceCream' //35 //33 //'android-Q' //28 //'android-P' //27a
+        globalCompileSdkPreview = "Baklava"//"VanillaIceCream" // TO BE USED
+        globalNdkVersion="29.0.13599879" //"29.0.13113456"//"26.3.11579264" //"26.2.11394342" //"26.1.10909125" //"25.2.9519653" // if desired, ~3 build.gradle files this: -> ndkVersion project.ext.globalNdkVersion; it's also used in docker build
         //globalMultiDexEnabled=true
     }
     //project.android.ndkDirectory="C:\\_me\\android\\sdk\\ndk-bundle"
