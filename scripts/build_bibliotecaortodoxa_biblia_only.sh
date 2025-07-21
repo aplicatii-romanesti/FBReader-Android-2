@@ -71,7 +71,7 @@ ANDROID_NDK=/opt/android-sdk/ndk/$NDK_VER
 echo "actual build starts now"
 sleep 1
 #docker run --name fb -ti -e JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/ -e ANDROID_NDK=$ANDROID_NDK -e ANDROID_NDK_HOME=$ANDROID_NDK -e ANDROID_NDK_ROOT=$ANDROID_NDK -v `pwd`:/p mingc/android-build-box:1.25.0 bash -c 'cd /p/ && ./gradlew --warning-mode all --gradle-user-home=/p/.gradle/ assembleRelease' | tee -a $NAME.log
-docker run --name fb -ti -v `pwd`:/p mingc/android-build-box:1.25.0 bash -c 'cd /p/ && ./gradlew --warning-mode all --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $NAME.log
+docker run --name fb -ti -v `pwd`:/p mingc/android-build-box:1.29.0 bash -c 'cd /p/ && ./gradlew --warning-mode all --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $NAME.log
 #sudo rm -rf FBReader-Android-2-dev/fbreader/app/build/generated/not_namespaced_r_class_sources/* || true #so we will be able to use Android Studio as well afterwards...
 sudo rm -rf ./fbreader/app/build/generated/not_namespaced_r_class_sources/* 2>/dev/null || true #so we will be able to use Android Studio as well afterwards...
 sudo chown -R aplicatii-romanesti:aplicatii-romanesti `pwd`
