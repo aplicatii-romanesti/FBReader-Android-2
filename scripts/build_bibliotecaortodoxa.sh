@@ -63,8 +63,15 @@ ls -la fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk | tee -a $
 cp -f fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
 ln -sf ~/${NAME}.apk ~/branch_x_latest.apk
 
+## debug symbols
+ls -la fbreader/app/build/outputs/native-debug-symbols/fatRelease/native-debug-symbols.zip | tee -a $NAME.log
+cp -pf fbreader/app/build/outputs/native-debug-symbols/fatRelease/native-debug-symbols.zip ~/${NAME}-native-debug-symbols.zip | tee -a $NAME.log
+ln -sf ~/${NAME}-native-debug-symbols.zip ~/branch_x_latest-native-debug-symbols.zip || true
+
+
 echo "Version: ${VV}"
 echo "Name: $NAME"
+echo "Path: ~/${NAME}*"
 echo "Path: ~/${NAME}.apk"
 
 ### CHOWN/CLEANUP ALL build directories (so we can build from IDE also)
