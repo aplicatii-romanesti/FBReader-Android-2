@@ -47,6 +47,11 @@ for app in "${APPS_M_BASED[@]}"; do
   ./ftp_upload_apk_to_phone.sh ${app}.aab
 done
 
+echo "list them all"
+for app in "${APPS_M_BASED[@]}"; do
+  ls -lart ~/${app}.apk
+done
+
 echo "TO retry ftp upload, do: "
 for app in "${APPS_M_BASED[@]}"; do
   echo "./ftp_upload_apk_to_phone.sh ${app}.apk"
