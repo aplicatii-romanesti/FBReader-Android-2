@@ -26,7 +26,7 @@ for HOST in $HOSTS; do
     mput "$REL_FILE_NAME"
     bye
 EOF
-  cp -p "$REL_FILE_NAME" /m/backup/el/pixel8_2024Nov/2way/
+  cp -p "/home/aplicatii-romanesti/$REL_FILE_NAME" /m/backup/el/pixel8_2024Nov/2way/
   #put branch_bibliotecaortodoxa_version_*_at_*.apk
  done
 
