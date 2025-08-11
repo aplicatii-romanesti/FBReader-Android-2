@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 set -Eeo pipefail
 DATE_START=`date +'%Y%m%d_%H%M%S'`
 
@@ -30,7 +31,8 @@ if [[ -n $1 ]]; then
     ;;
   esac
 else
-  RELEASE_TYPE=$(cat ../current_app.txt~ | cut -d" " -f2)
+  #RELEASE_TYPE=$(cat ../current_app.txt~ | cut -d" " -f2)
+  RELEASE_TYPE=$(awk -F" " '{print $2}' ../current_app.txt~)
 fi
 
 cd ~/
