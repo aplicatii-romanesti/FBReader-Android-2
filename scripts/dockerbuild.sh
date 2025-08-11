@@ -5,12 +5,32 @@ DATE_START=`date +'%Y%m%d_%H%M%S'`
 if [[ -n $1 ]]; then
   echo "Name of the app being build provided as input is: $1"
   APP=$1
-  echo $APP >../current_app.txt~ 
+  echo "$APP" >../current_app.txt~
 elif [[ -r ../current_app.txt~ ]]; then
-  APP=$(cat ../current_app.txt~)
+  APP=$(cat ../current_app.txt~ | cut -d" " -f1)
 else
   echo "Please provide input, e.g. Pidalion"
   exit 1
+fi
+shift
+
+## if 2nd arg is apk or aab, we will do either only bundle or only apk
+RELEASE_TYPE=""
+if [[ -n $1 ]]; then
+  case $1 in
+  apk)
+    RELEASE_TYPE="aab"
+    ;;
+  aab)
+    RELEASE_TYPE="apk"
+    ;;
+  *)
+    echo "unsupported RELEASE_TYPE"
+    exit 2
+    ;;
+  esac
+else
+  RELEASE_TYPE=$(cat ../current_app.txt~ | cut -d" " -f2)
 fi
 
 cd ~/
@@ -56,19 +76,40 @@ cp ~/777/aplicatii.romanesti-release-key.keystore $BUILD_FOLDER/
 
 cd ~/
 docker rm -f fb 2>&- || true
-if [[ -f ~/local.properties.docker ]]; then
-  cp local.properties.docker ${BUILD_FOLDER}/local.properties
-elif [[ -f ~/local.properties.docker ]]; then
-  cp local.properties.docker ${BUILD_FOLDER}/local.properties
-else
-  echo "ERROR, could not find local.properties.docker"
-  exit 3
+
+if [[ $RELEASE_TYPE == "apk" || -z $RELEASE_TYPE ]]; then
+  echo "preparing signing key fr apk bundleRelease"
+  if [[ -f ~/local.properties.docker ]]; then
+    cp local.properties.docker ${BUILD_FOLDER}/local.properties
+  elif [[ -f ${BUILD_FOLDER}/local.properties.docker ]]; then
+    cp ${BUILD_FOLDER}/local.properties.docker ${BUILD_FOLDER}/local.properties
+  else
+    echo "ERROR, could not find local.properties.docker"
+    exit 5
+  fi
+
+  echo "building apk release"
+  #docker run --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.1 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $GIT_BRANCH.log
+  # export BUILD_FOLDER=${BUILD_FOLDBUILD_FOLDER:-/home/aplicatii-romanesti/FBReader-Android-2}
+  docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p -v ${BUILD_FOLDER}/../Android/Sdk:"/opt/android-sdk/" $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ assembleRelease' | tee -a $NAME.log
 fi
 
-#docker run --name fb -ti -v `pwd`/FBReader-Android-2:/p mingc/android-build-box:1.11.1 bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ clean assembleRelease' | tee -a $GIT_BRANCH.log
-# export BUILD_FOLDER=${BUILD_FOLDBUILD_FOLDER:-/home/aplicatii-romanesti/FBReader-Android-2}
-docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p -v ${BUILD_FOLDER}/../Android/Sdk:"/opt/android-sdk/" $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ bundleRelease assembleRelease' | tee -a $NAME.log
+if [[ $RELEASE_TYPE == "aab" || -z $RELEASE_TYPE ]]; then
+  echo "preparing signing key fr aab bundleRelease"
+  if [[ -f ~/local.properties.docker.upload.aab ]]; then
+    cp local.properties.docker.upload.aab ${BUILD_FOLDER}/local.properties
+  elif [[ -f ${BUILD_FOLDER}/local.properties.docker.upload.aab ]]; then
+    cp ${BUILD_FOLDER}/local.properties.docker.upload.aab ${BUILD_FOLDER}/local.properties
+  else
+    echo "ERROR, could not find local.properties.docker.upload.aab"
+    exit 7
+  fi
 
+  echo "building aab bundleRelease"
+  docker run --rm --name fb -ti -v ${BUILD_FOLDER}:/p -v ${BUILD_FOLDER}/../Android/Sdk:"/opt/android-sdk/" $(cat $BUILD_FOLDER/scripts/dockerBuilderImage.txt) bash -c 'cd /p/ && ./gradlew  --gradle-user-home=/p/.gradle/ bundleRelease' | tee -a $NAME.log
+fi
+
+echo "copying local.properties.outsidedocker to ${BUILD_FOLDER} to allow Android studio builds also meanwhile"
 if [[ -f ~/local.properties.outsidedocker ]]; then
   cp local.properties.outsidedocker ${BUILD_FOLDER}/local.properties
 elif [[ -f ~/local.properties.docker ]]; then
