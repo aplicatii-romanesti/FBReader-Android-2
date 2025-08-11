@@ -42,6 +42,7 @@ if [[ ! -d FBReader-Android-2 ]]; then
 else
   cd FBReader-Android-2
   git pull
+  sleep 1
   git checkout molitfelnic
   git pull
   sleep 3
