@@ -35,6 +35,7 @@ fi
 echo "STEP 0.25: basic vars"
 RESOURCES_DIR="./molitfelnic_to_any_app_res/${TARGET_APP}"
 BOOKS_DIR=~/Books
+BOOKS_WITH_HOWTO_DIR=~/Books_with_HowTO
 
 echo "RESOURCES_DIR=$RESOURCES_DIR"
 echo "BOOKS_DIR=$BOOKS_DIR"
@@ -115,6 +116,15 @@ fi
 while IFS= read B ; do
 	echo B=$B
 	ls -la "${BOOKS_DIR}/${B}"
+	if [[ -r ${BOOKS_WITH_HOWTO_DIR}/${B} ]]; then
+    echo "ensure the same book under the BOOKS_WITH_HOWTO_DIR has same checksum. else exit"
+    # shellcheck disable=SC2086
+    if $(cksum "${BOOKS_DIR}/${B}" | cut -d' ' -f1) != $(cksum "${BOOKS_WITH_HOWTO_DIR}/${B}" | cut -d' ' -f1); then
+      echo "cksum ${BOOKS_DIR}/${B}) != cksum ${BOOKS_WITH_HOWTO_DIR}/${B} !!!"
+      exit 33
+    fi
+	fi
+
 	cp -rfp "${BOOKS_DIR}/${B}" ./fbreader/app/src/main/assets/data/SDCard/Books/
 	ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/
 # done < ${RESOURCES_DIR}/epubs.list # this does not work when there is no EOL at the end of the file
