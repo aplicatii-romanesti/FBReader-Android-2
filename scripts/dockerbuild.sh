@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-[ "$SHLVL" -lt 2 ] && echo "this script is to be called by ./build_all_molitfelnic_based.sh , not directly!" && exit 1
+[ "$SHLVL" -lt 3 ] && echo "this script is to be called by ./build_all_molitfelnic_based.sh , not directly!" && exit 1
 
 set -Eeo pipefail
 DATE_START=`date +'%Y%m%d_%H%M%S'`

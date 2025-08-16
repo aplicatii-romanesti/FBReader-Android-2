@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -o pipefail
 
-[ "$SHLVL" -lt 2 ] && echo "this script is to be called by ./build_all_molitfelnic_based.sh , not directly!" && exit 1
+[ "$SHLVL" -lt 3 ] && echo "this script is to be called by ./build_all_molitfelnic_based.sh , not directly!" && exit 1
 
 #find ./ -type f "*.java" -exec perl -p -i -e 's!FBReaderMolitfelnic.ORG!FBReader.ORG!g' {} +
 #git clone -b bibliotecaortodoxa --single-branch https://github.com/aplicatii-romanesti/FBReader-Android-2.git
