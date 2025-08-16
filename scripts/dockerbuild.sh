@@ -131,6 +131,7 @@ ls -la ${BUILD_FOLDER}/fbreader/app/build/outputs/native-debug-symbols/fatReleas
 cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/apk/fat/release/app-fat-release.apk ~/${NAME}.apk
 cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/bundle/fatRelease/app-fat-release.aab ~/${NAME}.aab
 cp -pf ${BUILD_FOLDER}/fbreader/app/build/outputs/native-debug-symbols/fatRelease/native-debug-symbols.zip ~/${NAME}-native-debug-symbols.zip || true
+cp -rp ~/${NAME}.apk ~/${NAME}.aab /2way/ || true
 rm -f ~/${APP}.apk 2>/dev/null || true
 rm -f ~/${APP}.aab 2>/dev/null || true
 rm -f ~/${APP}-native-debug-symbols.zip 2>/dev/null || true
