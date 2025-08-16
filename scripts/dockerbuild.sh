@@ -1,5 +1,8 @@
 #!/bin/bash
 set -x
+
+[ "$SHLVL" -lt 2 ] && echo "this script is to be called by ./build_all_molitfelnic_based.sh , not directly!" && exit 1
+
 set -Eeo pipefail
 DATE_START=`date +'%Y%m%d_%H%M%S'`
 
@@ -138,6 +141,7 @@ rm -f ~/${APP}-native-debug-symbols.zip 2>/dev/null || true
 ln -sf ~/${NAME}.apk ~/${APP}.apk
 ln -sf ~/${NAME}.aab ~/${APP}.aab
 ln -sf ~/${NAME}-native-debug-symbols.zip ~/${APP}-native-debug-symbols.zip || true
+ls -la ~/${NAME}.apk ~/${NAME}.aab || true
 
 echo "Ended at: `date` (was started at $DATE_START" | tee -a $NAME.log
 
