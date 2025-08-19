@@ -31,7 +31,7 @@ import com.mobeta.android.dslv.DragSortListView;
 
 import org.fbreader.util.android.ViewUtil;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
 import org.geometerplus.fbreader.network.*;
 import org.geometerplus.android.fbreader.covers.CoverManager;
 

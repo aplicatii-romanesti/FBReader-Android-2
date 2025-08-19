@@ -37,7 +37,7 @@ import org.geometerplus.android.fbreader.bookmark.EditBookmarkActivity;
 import org.geometerplus.android.util.OrientationUtil;
 
 public class SelectionBookmarkAction extends FBAndroidAction {
-	SelectionBookmarkAction(FBReaderMolitfelnic baseApplication, FBReaderApp fbreader) {
+	SelectionBookmarkAction(FBReader baseApplication, FBReaderApp fbreader) {
 		super(baseApplication, fbreader);
 	}
 

@@ -144,6 +144,8 @@ else
   ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/
 fi
 
+if [[ $TARGET_APP != "BibliotecaOrtodoxa_bibliotecaortodoxa" ]]; then
+
 # STEP 0.9: determine name of the new app and other metadata details
 echo "STEP 0.9: determine name of the new app and other metadata details:"
 NEWAPP_CAMEL=$(grep NEWAPP_CAMEL ${RESOURCES_DIR}/name.metadata | cut -d"=" -f2)
@@ -164,8 +166,15 @@ echo "STEP 1: Replace inside files:"
 #ALL_FILES=$(find ./ -type f ! \( -path '*/.gradle/*' -o -path '*/generated/*' -o -path '/*intermediates/*' \)  \( -iname \*.java -o -iname \*.xml -o -iname \*.gradle -o -iname \*.properties \)  )
 ALL_FILES=$(find . \( -path "*/build" -o -path "./.gradle" -o -path "*/.git" \) -a -prune -o \( -type f \( -iname \*.java -o -iname \*.xml -o -iname \*.gradle -o -iname \*.properties \) -print \) )
 
-perl -p -i -e "s^molitfelnic^${NEWAPP_SMALL}^g" $ALL_FILES
-perl -p -i -e "s^Molitfelnic^${NEWAPP_CAMEL}^g" $ALL_FILES
+if [[ ( "${TARGET_APP}" == "BibliotecaOrtodoxa_bibliotecaortodoxa" ) ]]; then
+  perl -p -i -e 's!org.nicolae.search.!org.nicolae.test.!g' $ALL_FILES
+  perl -p -i -e 's!mfbreadermolitfelnic!fbreader!g' $ALL_FILES
+  perl -p -i -e 's!_molitfelnic!!g' $ALL_FILES
+  perl -p -i -e 's!Molitfelnic!!g' $ALL_FILES
+else
+  perl -p -i -e "s^molitfelnic^${NEWAPP_SMALL}^g" $ALL_FILES
+  perl -p -i -e "s^Molitfelnic^${NEWAPP_CAMEL}^g" $ALL_FILES
+fi
 
 echo "STEP 1.1 - getFirstFileBookReplaceTOKEN"
 EPUB_FIRST="\"$(cat ${RESOURCES_DIR}/epub_first_internal_path.list | tail -1)\""
@@ -186,20 +195,30 @@ EOF
 
 echo "STEP 3: Replace names of files and folders:"
 # STEP 3: Replace names of files and folders:
-if [[ "${TARGET_APP}" != "Molitfelnic" ]]; then
-  git mv fbreader/app/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_molitfelnic/ fbreader/app/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_${NEWAPP_SMALL}/
 
-  git mv fbreader/app/src/main/java/org/nicolae/search_molitfelnic/ fbreader/app/src/main/java/org/nicolae/search_${NEWAPP_SMALL}/
+case "${TARGET_APP}" in
+  BibliotecaOrtodoxa_bibliotecaortodoxa)
+    echo "BibliotecaOrtodoxa_bibliotecaortodoxa"
+    git mv ./fbreader/app/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_molitfelnic ./fbreader/app/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti
+    git mv ./fbreader/common/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_molitfelnic ./fbreader/common/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti
+    git mv ./fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderMolitfelnic.java ./fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReader.java
+    git mv ./fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplicationMolitfelnic.java ./fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication.java
+    git mv ./fbreader/app/src/main/java/org/nicolae/search_molitfelnic ./fbreader/app/src/main/java/org/nicolae/test
+    ;;
+  Molitfelnic)
+    echo Molitfelnic
+    echo "We have to build $TARGET_APP, skipped git mv"
+    ;;
+  *)
+    git mv fbreader/app/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_molitfelnic/ fbreader/app/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_${NEWAPP_SMALL}/
+    git mv fbreader/app/src/main/java/org/nicolae/search_molitfelnic/ fbreader/app/src/main/java/org/nicolae/search_${NEWAPP_SMALL}/
+    git mv fbreader/common/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_molitfelnic/ fbreader/common/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_${NEWAPP_SMALL}/
+    git mv fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplicationMolitfelnic.java fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication${NEWAPP_CAMEL}.java
+    git mv fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderMolitfelnic.java fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReader${NEWAPP_CAMEL}.java
+esac
 
-  git mv fbreader/common/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_molitfelnic/ fbreader/common/src/main/java/org/geometerplus/zlibrary/ui/android/aplicatii/romanesti_${NEWAPP_SMALL}/
-
-  git mv fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplicationMolitfelnic.java fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication${NEWAPP_CAMEL}.java
-
-  git mv fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderMolitfelnic.java fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReader${NEWAPP_CAMEL}.java
-else
-  echo "We have to build Molitfelnic, skipped git mv"
-fi
 echo "Sanity 1"
+set +u
 grep Application fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication${NEWAPP_CAMEL}.java
 
 echo "Sanity 2"
@@ -209,7 +228,7 @@ echo "Sanity 3: expect to have changes in 186 files. Your git status | wc is:"
 git status | wc -l
 
 echo "${0} finished at `date`"
-echo "git branch $NEWAPP_SMALL"
+#echo "git branch $NEWAPP_SMALL"
 ############# aplicatii.romanesti to molitfelnic:
 # mv fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplicationMolitfelnic.java fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication.java
 # git mv fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication.java fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplicationMolitfelnic.java

@@ -32,7 +32,7 @@ import android.widget.ListView;
 import org.geometerplus.zlibrary.core.options.ZLStringOption;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
 
 import org.geometerplus.fbreader.Paths;
 import org.geometerplus.fbreader.book.*;
@@ -245,7 +245,7 @@ public class LibraryActivity extends TreeActivity<LibraryTree> implements MenuIt
 	private boolean onContextItemSelected(int itemId, Book book) {
 		switch (itemId) {
 			case ContextItemId.OpenBook:
-				FBReaderMolitfelnic.openBookActivity(this, book, null);
+				FBReader.openBookActivity(this, book, null);
 				return true;
 			case ContextItemId.ShowBookInfo:
 				showBookInfo(book);

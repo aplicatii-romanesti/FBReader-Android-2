@@ -29,7 +29,7 @@ import org.geometerplus.fbreader.network.tree.AddCustomCatalogItemTree;
 
 import org.geometerplus.android.fbreader.network.AddCatalogMenuActivity;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
 
 public class AddCustomCatalogAction extends Action {
 	public AddCustomCatalogAction(Activity activity) {

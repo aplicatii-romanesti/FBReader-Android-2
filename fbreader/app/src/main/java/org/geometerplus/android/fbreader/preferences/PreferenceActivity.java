@@ -35,14 +35,14 @@ import org.geometerplus.zlibrary.core.resources.ZLResource;
 
 import org.geometerplus.zlibrary.text.view.style.*;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.library.ZLAndroidLibrary;
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.view.ZLAndroidPaintContext;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.library.ZLAndroidLibrary;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.view.ZLAndroidPaintContext;
 
 import org.geometerplus.fbreader.Paths;
 import org.geometerplus.fbreader.fbreader.*;
 import org.geometerplus.fbreader.fbreader.options.*;
 
-import org.geometerplus.android.fbreader.FBReaderMolitfelnic;
+import org.geometerplus.android.fbreader.FBReader;
 import org.geometerplus.android.fbreader.dict.DictionaryUtil;
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 import org.geometerplus.android.fbreader.network.auth.ActivityNetworkContext;
@@ -98,7 +98,7 @@ public class PreferenceActivity extends ZLPreferenceActivity {
 		config.requestAllValuesForGroup("Scrolling");
 		config.requestAllValuesForGroup("Colors");
 		config.requestAllValuesForGroup("Sync");
-		setResult(FBReaderMolitfelnic.RESULT_REPAINT);
+		setResult(FBReader.RESULT_REPAINT);
 
 		final ViewOptions viewOptions = new ViewOptions();
 		final MiscOptions miscOptions = new MiscOptions();

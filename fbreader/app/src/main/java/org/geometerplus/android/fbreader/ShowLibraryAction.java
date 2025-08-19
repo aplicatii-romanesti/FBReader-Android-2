@@ -30,7 +30,7 @@ import org.geometerplus.android.util.OrientationUtil;
 import org.geometerplus.android.util.PackageUtil;
 
 class ShowLibraryAction extends FBAndroidAction {
-	ShowLibraryAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
+	ShowLibraryAction(FBReader baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
 	}
 

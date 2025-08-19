@@ -28,10 +28,10 @@ import android.net.Uri;
 import android.content.Intent;
 import android.content.DialogInterface;
 
-import org.geometerplus.android.fbreader.FBReaderMolitfelnic;
+import org.geometerplus.android.fbreader.FBReader;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
-import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti_molitfelnic.R;
+import org.geometerplus.zlibrary.ui.android.aplicatii.romanesti.R;
 
 import org.geometerplus.fbreader.book.IBookCollection;
 import org.geometerplus.fbreader.network.*;
@@ -213,7 +213,7 @@ public abstract class NetworkBookActions {
 				new Intent(Intent.ACTION_VIEW,
 					Uri.fromFile(new File(local)),
 					activity.getApplicationContext(),
-					FBReaderMolitfelnic.class
+					FBReader.class
 				).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)
 			);
 		}

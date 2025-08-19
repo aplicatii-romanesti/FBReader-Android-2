@@ -26,10 +26,10 @@ import org.geometerplus.android.fbreader.api.FBReaderIntents;
 import org.geometerplus.android.util.OrientationUtil;
 import org.geometerplus.android.util.PackageUtil;
 import org.geometerplus.fbreader.fbreader.FBReaderApp;
-import org.nicolae.search_molitfelnic.LocalLibrarySearchActivity;
+import org.nicolae.test.molitfelnic.LocalLibrarySearchActivity;
 
 class ShowSearchLibraryAction extends FBAndroidAction {
-	ShowSearchLibraryAction(FBReaderMolitfelnic baseActivity, FBReaderApp fbreader) {
+	ShowSearchLibraryAction(FBReader baseActivity, FBReaderApp fbreader) {
 		super(baseActivity, fbreader);
 	}
 
