@@ -37,7 +37,7 @@ for app in "${APPS_M_BASED[@]}"; do
   echo "Building $app"
   echo "$app" >../current_app.txt~
   git reset --hard HEAD
-  ./molitfelnic_to_any_app.sh "$app" && ./dockerbuild.sh "$app" "aab"
+  ./molitfelnic_to_any_app.sh "$app" && ./dockerbuild.sh "$app" # "aab"
 done
 
 echo "Trying also ftp upload using ./ftp_upload_apk_to_phone.sh .apk"
