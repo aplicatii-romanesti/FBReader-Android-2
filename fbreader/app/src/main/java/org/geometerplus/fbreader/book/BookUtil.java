@@ -42,8 +42,7 @@ public abstract class BookUtil {
 
 	// aplicatii.romanesti
 	public static ZLResourceFile getFirstFile() {
-		ZLResourceFile file = ZLResourceFile.createResourceFile(
-				"data/SDCard/Books/Molitfelnicul necenzurat - mirem.ro,bibliotecaortodoxa.ro.epub" //getFirstFileBookReplaceTOKEN // don not remove this comment and keep it inline
+		ZLResourceFile file = ZLResourceFile.createResourceFile("data/SDCard/Books/Molitfelnicul necenzurat - mirem.ro,bibliotecaortodoxa.ro.epub" //getFirstFileBookReplaceTOKEN // don not remove this comment and keep it inline
 		);
 		if (file.exists()) {
 			return file;
