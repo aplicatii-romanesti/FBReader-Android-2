@@ -217,10 +217,18 @@ esac
 
 echo "Sanity 1"
 set +u
-grep Application fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication${NEWAPP_CAMEL}.java
+if [[ $TARGET_APP == "BibliotecaOrtodoxa_bibliotecaortodoxa" ]]; then
+  grep Application fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication.java
+else
+  grep Application fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReaderApplication${NEWAPP_CAMEL}.java
+fi
 
 echo "Sanity 2"
-grep Application fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReader${NEWAPP_CAMEL}.java
+if [[ $TARGET_APP == "BibliotecaOrtodoxa_bibliotecaortodoxa" ]]; then
+  grep Application fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReader.java
+else
+  grep Application fbreader/app/src/main/java/org/geometerplus/android/fbreader/FBReader${NEWAPP_CAMEL}.java
+fi
 
 echo "Sanity 3: expect to have changes in 186 files. Your git status | wc is:"
 git status | wc -l
