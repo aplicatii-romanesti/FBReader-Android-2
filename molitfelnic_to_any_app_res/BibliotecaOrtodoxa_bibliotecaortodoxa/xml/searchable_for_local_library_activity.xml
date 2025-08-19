@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/app_name"
+    android:hint="@string/search_hint" 
+    android:includeInGlobalSearch="true"
+    android:searchSettingsDescription="Biblioteca Ortodoxa"
+    android:queryAfterZeroResults="false"
+    android:voiceSearchMode="launchRecognizer"
+    android:voiceLanguageModel="free_form"
+    android:voicePromptText="Spuneți numele unui sfânt sau un cuvânt cheie al cărții dorite"
+    android:voiceLanguage="ro"
+    android:searchSuggestAuthority="org.nicolae.test.BookSearchHintProvider"
+    android:searchSuggestIntentAction="android.fbreader.action.LOCAL_SEARCH_VIEW"
+    android:searchSuggestIntentData="content://org.nicolae.test.BookSearchHintProvider/dictionary"
+    android:searchSuggestSelection=" upper(suggest_text_1) like ?1 or upper(suggest_text_2) like ?1"
+    android:searchSuggestThreshold="0" />
+
+<!--
+  aplicatii.romanesti
+  replaced: android:label="@string/empty_string"
+  removed:     android:includeInGlobalSearch="false"  # to true
+  added: android:hint="@string/search_hint"  android:includeInGlobalSearch="true" android:searchSettingsDescription="Biblioteca Ortodoxa" android:queryAfterZeroResults="false"
+
+  https://developer.android.com/guide/topics/search/searchable-config
+-->
