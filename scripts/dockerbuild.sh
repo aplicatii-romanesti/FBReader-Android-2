@@ -61,6 +61,7 @@ NAME="${APP}_${GIT_BRANCH}_${DATE_START}"
 echo "FYI, GIT_BRANCH=$GIT_BRANCH at date: $DATE_START (approx: `date`)" | tee ${NAME}.log
 
 cp ~/777/aplicatii.romanesti-release-key.keystore $BUILD_FOLDER/
+cp ~/777/aplicatii.romanesti-upload-key.jks $BUILD_FOLDER/
 
 #mkdir -p ~/FBReader-Android-2/fbreader/app/src/main/assets/data/SDCard/Books/
 #rm -rf ~/FBReader-Android-2/fbreader/app/src/main/assets/data/SDCard/Books/*
