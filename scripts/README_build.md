@@ -16,6 +16,8 @@ OR all of them, without any param. It will build both apk and aab unless specifi
    `build_all_molitfelnic_based.sh`
 
 (no need for dockerbuild_molitfelnic_only.sh any longer, the generic ./molitfelnic_to_any_app.sh does also Molitfelnic)
+(no need for build_bibliotecaortodoxa_from_molitfelnic.sh any longer, the generic ./molitfelnic_to_any_app.sh does also BibliotecaOrtodoxa_bibliotecaortodoxa )
+
 
 
 --------------

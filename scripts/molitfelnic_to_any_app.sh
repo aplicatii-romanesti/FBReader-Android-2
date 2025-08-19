@@ -165,6 +165,7 @@ echo "STEP 1: Replace inside files:"
 ALL_FILES=$(find . \( -path "*/build" -o -path "./.gradle" -o -path "*/.git" \) -a -prune -o \( -type f \( -iname \*.java -o -iname \*.xml -o -iname \*.gradle -o -iname \*.properties \) -print \) )
 
 if [[ ( "${TARGET_APP}" == "BibliotecaOrtodoxa_bibliotecaortodoxa" ) ]]; then
+  perl -p -i -e 's!search_molitfelnic!test!g' $ALL_FILES
   perl -p -i -e 's!org.nicolae.search.!org.nicolae.test.!g' $ALL_FILES
   perl -p -i -e 's!mfbreadermolitfelnic!fbreader!g' $ALL_FILES
   perl -p -i -e 's!_molitfelnic!!g' $ALL_FILES

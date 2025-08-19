@@ -1,5 +1,7 @@
 #!/bin/bash
 set -eu -o pipefail
+echo "use the generic ./build_all_molitfelnic_based.sh BibliotecaOrtodoxa_bibliotecaortodoxa from molitfelnic branch"
+exit 1
 DATE_START_EPOCH=`date +%s`
 DATE_START=`date +'%Y%m%d_%H%M%S'` # EPOCH Does not have timezone, so not using
 echo "starting at ~$DATE_START"

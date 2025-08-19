@@ -37,23 +37,23 @@ for app in "${APPS_M_BASED[@]}"; do
   echo "Building $app"
   echo "$app" >../current_app.txt~
   git reset --hard HEAD
-  ./molitfelnic_to_any_app.sh "$app" && ./dockerbuild.sh "$app"
+  ./molitfelnic_to_any_app.sh "$app" && ./dockerbuild.sh "$app" # "aab"
 done
 
 echo "Trying also ftp upload using ./ftp_upload_apk_to_phone.sh .apk"
 for app in "${APPS_M_BASED[@]}"; do
   echo "ftp-ing $app"
-  ./ftp_upload_apk_to_phone.sh ${app}.apk
   ./ftp_upload_apk_to_phone.sh ${app}.aab
+  [[ -r ${app}.apk ]] && ./ftp_upload_apk_to_phone.sh ${app}.apk
 done
 
 echo "list them all"
 for app in "${APPS_M_BASED[@]}"; do
-  ls -lart ~/${app}.apk
+  ls -lart ~/${app}.aab
 done
 
 echo "TO retry ftp upload, do: "
 for app in "${APPS_M_BASED[@]}"; do
-  echo "./ftp_upload_apk_to_phone.sh ${app}.apk"
   echo "./ftp_upload_apk_to_phone.sh ${app}.aab"
+  echo "./ftp_upload_apk_to_phone.sh ${app}.apk"
 done
