@@ -177,7 +177,8 @@ fi
 
 echo "STEP 1.1 - getFirstFileBookReplaceTOKEN"
 EPUB_FIRST="\"$(cat ${RESOURCES_DIR}/epub_first_internal_path.list | tail -1)\""
-sed -i "s%.*getFirstFileBookReplaceTOKEN.*%${EPUB_FIRST}%" fbreader/app/src/main/java/org/geometerplus/fbreader/book/BookUtil.java
+perl -p -i -e "s%(.*ZLResourceFile file = ZLResourceFile.createResourceFile\()\"data/SDCard/Books/Molitfelnicul necenzurat - mirem.ro,bibliotecaortodoxa.ro.epub\"(.*)%\1${EPUB_FIRST}\2%g" fbreader/app/src/main/java/org/geometerplus/fbreader/book/BookUtil.java
+#sed -i "s%.*getFirstFileBookReplaceTOKEN.*%${EPUB_FIRST}%" fbreader/app/src/main/java/org/geometerplus/fbreader/book/BookUtil.java
 
 
 echo "STEP 2: Replace application name and its search hint"
