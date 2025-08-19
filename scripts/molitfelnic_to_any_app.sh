@@ -144,8 +144,6 @@ else
   ls -la ./fbreader/app/src/main/assets/data/SDCard/Books/
 fi
 
-if [[ $TARGET_APP != "BibliotecaOrtodoxa_bibliotecaortodoxa" ]]; then
-
 # STEP 0.9: determine name of the new app and other metadata details
 echo "STEP 0.9: determine name of the new app and other metadata details:"
 NEWAPP_CAMEL=$(grep NEWAPP_CAMEL ${RESOURCES_DIR}/name.metadata | cut -d"=" -f2)
